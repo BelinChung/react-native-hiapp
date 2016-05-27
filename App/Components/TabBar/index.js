@@ -6,7 +6,9 @@ import React, {
 } from 'react-native'
 
 import TabNavigator from 'react-native-tab-navigator'
-import iconfontConf from '../../Utils/iconfontConf'
+import IconfontConf from '../../Utils/iconfontConf'
+
+import HomeView from '../../Views/Home' 
 
 const tabIconfont = {
     Home: 'E61A',
@@ -28,7 +30,7 @@ export default class TabBarComp extends Component {
     render() {
         return (  
             <TabNavigator hidesTabTouch={true}>  
-                {this._renderTabItem('Home', this._createChildView('Home'))}  
+                {this._renderTabItem('Home', <HomeView/>)}  
                 {this._renderTabItem('Contacts', this._createChildView('DDD'))}  
                 {this._renderTabItem('Settings', this._createChildView('EEEE'))} 
             </TabNavigator>  
@@ -61,7 +63,7 @@ export default class TabBarComp extends Component {
     _renderTabItemIcon(tag, selected = false) {
         tag = selected ? tag + 'Selected' : tag
         return (
-            <Text style={[styles.tabIcon, selected ? styles.selectedTabIcon : {}]}>{iconfontConf('uni' + tabIconfont[tag])}</Text>
+            <Text style={[styles.tabIcon, selected ? styles.selectedTabIcon : {}]}>{IconfontConf('uni' + tabIconfont[tag])}</Text>
         )    
     }
 }

@@ -17,6 +17,9 @@
     "react-native/split-platform-components": 2,
     "react-native/no-inline-styles": 2
   },
+  "globals": {
+    "fetch": true
+  },
   "plugins": [
     "react",
     "react-native"

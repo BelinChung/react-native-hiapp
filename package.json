@@ -13,8 +13,10 @@
     "lint": "eslint . --ext js"
   },
   "dependencies": {
+    "moment": "^2.13.0",
     "react": "^0.14.8",
     "react-native": "^0.25.1",
+    "react-native-gifted-listview": "^0.0.15",
     "react-native-navbar": "^1.5.0",
     "react-native-tab-navigator": "^0.3.2"
   },

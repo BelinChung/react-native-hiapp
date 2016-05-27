@@ -1,0 +1,28 @@
+{
+  "name": "RN_HiApp",
+  "description": "HiApp written with react-native.",
+  "version": "0.1.0",
+  "author": "BelinChung",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BelinChung/react-native-hiapp.git"
+  },
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "lint": "eslint . --ext js"
+  },
+  "dependencies": {
+    "react": "^0.14.8",
+    "react-native": "^0.25.1",
+    "react-native-navbar": "^1.5.0",
+    "react-native-tab-navigator": "^0.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^2.4.0",
+    "eslint-config-coremail": "~0.0.4",
+    "eslint-plugin-react": "^5.1.1",
+    "eslint-plugin-react-native": "^1.1.0-beta",
+    "rnpm-plugin-upgrade": "^0.26.0"
+  }
+}

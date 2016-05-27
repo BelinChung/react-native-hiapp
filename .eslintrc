@@ -1,0 +1,27 @@
+{
+  "extends": "coremail",
+  "env": {
+    "jasmine": true,
+    "node": true,
+    "mocha": true,
+    "builtin": true
+  },
+  "rules": {
+    "semi": [2, "never"],
+    "no-unused-vars": [0, {
+      "vars": "local",
+      "args": "after-used"
+    }],
+    "no-trailing-spaces": 0,
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2
+  },
+  "plugins": [
+    "react",
+    "react-native"
+  ],
+  "ecmaFeatures": {
+    "jsx": true
+  }
+}

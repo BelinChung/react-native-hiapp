@@ -8,7 +8,7 @@ import React, {
 } from 'react-native'
 
 import GiftedListView from 'react-native-gifted-listview'
-import fetchService from '../../Network'
+import {ajax} from '../../Network'
 import moment from 'moment'
 
 function getAvatarUrl(ID) {
@@ -37,7 +37,7 @@ export default class HomeView extends Component {
     }
     
     _onFetch(page = 1, callback, options) {
-        fetchService.ajax({
+        ajax({
             url: 'timeline.json'
         }).then(res => {
             if(!res.err_code) {

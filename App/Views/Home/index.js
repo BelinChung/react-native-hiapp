@@ -25,7 +25,6 @@ export default class HomeView extends Component {
     render() {
         return (
             <GiftedListView
-                style={styles.listView}
                 customStyles={customStyles}
                 rowView={this._renderRowView}
                 onFetch={this._onFetch}
@@ -51,14 +50,14 @@ export default class HomeView extends Component {
         return (
             <TouchableHighlight underlayColor='transparent'>
                 <View style={styles.tweetContainer}>
-                <Image source={{uri: getAvatarUrl(info.avatar)}} style={styles.avatar} />
-                <View style={styles.rightContainer}>
-                    <View style={styles.userContainer}>
-                    <Text style={styles.name}>{info.nickname}</Text>
-                    <Text style={styles.time}>{moment(info.created_at * 1000).fromNow()}</Text>
+                    <Image source={{uri: getAvatarUrl(info.avatar)}} style={styles.avatar} />
+                    <View style={styles.rightContainer}>
+                        <View style={styles.userContainer}>
+                        <Text style={styles.name}>{info.nickname}</Text>
+                        <Text style={styles.time}>{moment(info.created_at * 1000).fromNow()}</Text>
+                        </View>
+                        <Text style={styles.text}>{info.text}</Text>
                     </View>
-                    <Text style={styles.text}>{info.text}</Text>
-                </View>
                 </View>
             </TouchableHighlight>
         )
@@ -67,47 +66,8 @@ export default class HomeView extends Component {
 
 const customStyles = {
     paginationView: {
-        backgroundColor: '#efeff4'
+        ...styleUtils.containerBg
     }
 }
 
-const styles = StyleSheet.create({
-    listView: {
-        backgroundColor: '#efeff4'    
-    },
-    tweetContainer: {
-        ...styleUtils.itemCell,
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        paddingTop: 4,
-        paddingBottom: 10
-    },
-    avatar: {
-        backgroundColor: 'gray',
-        width: 50,
-        height: 50,
-        marginLeft: 10,
-        borderRadius: 4
-    },
-    userContainer: {
-        flexDirection: 'row'
-    },
-    time: {
-        marginLeft: 4,
-        fontSize: 13,
-        color: '#8999a5',
-        marginTop: 2
-    },
-    name: {
-        fontWeight: '600',
-        fontSize: 15
-    },
-    text: {
-        marginTop: 5
-    },
-    rightContainer: {
-        flex: 1,
-        padding: 10
-    }
-})
+const styles = StyleSheet.create(styleUtils.card)

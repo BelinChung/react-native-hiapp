@@ -7,8 +7,10 @@ import React, {
 
 import TabNavigator from 'react-native-tab-navigator'
 import IconfontConf from '../../Utils/iconfontConf'
+import styleUtils from '../../Styles'
 
 import HomeView from '../../Views/Home' 
+import SettingsView from '../../Views/Settings' 
 
 const tabIconfont = {
     Home: 'E61A',
@@ -29,10 +31,10 @@ export default class TabBarComp extends Component {
     
     render() {
         return (  
-            <TabNavigator hidesTabTouch={true}>  
+            <TabNavigator hidesTabTouch={true} sceneStyle={styles.sceneStyle}>  
                 {this._renderTabItem('Home', <HomeView/>)}  
                 {this._renderTabItem('Contacts', this._createChildView('DDD'))}  
-                {this._renderTabItem('Settings', this._createChildView('EEEE'))} 
+                {this._renderTabItem('Settings', <SettingsView/>)} 
             </TabNavigator>  
         )
     }
@@ -69,6 +71,10 @@ export default class TabBarComp extends Component {
 }
 
 const styles = StyleSheet.create({
+    sceneStyle: {
+        ...styleUtils.containerBg,
+        flex: 1  
+    },
     titleStyle: {
         color: '#929292',
         fontSize: 12,

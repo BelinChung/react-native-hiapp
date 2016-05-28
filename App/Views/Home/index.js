@@ -7,9 +7,10 @@ import React, {
   Text
 } from 'react-native'
 
+import moment from 'moment'
 import GiftedListView from 'react-native-gifted-listview'
 import {ajax} from '../../Network'
-import moment from 'moment'
+import styleUtils from '../../Styles'
 
 function getAvatarUrl(ID) {
     return 'http://lorempixel.com/68/68/people/' + ID
@@ -75,22 +76,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#efeff4'    
     },
     tweetContainer: {
+        ...styleUtils.itemCell,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: 'white',
-        borderColor: '#DAE6F0',
         paddingTop: 4,
-        paddingBottom: 10,
-        margin: 10,
-        marginBottom: 0,
-        borderRadius: 2,
-        shadowColor: '#000000',
-        shadowOpacity: 0.1,
-        shadowRadius: 0,
-        shadowOffset: {
-            height: 2,
-            width: 1
-        }
+        paddingBottom: 10
     },
     avatar: {
         backgroundColor: 'gray',

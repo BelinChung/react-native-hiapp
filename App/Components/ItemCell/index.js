@@ -14,7 +14,17 @@ import styleUtils from '../../Styles'
 export default class ItemCell extends Component {
     _renderDisclosureIndicator() {
         if (this.props.showDisclosureIndicator) {
-            return <Image source={require('../../assets/angle_right.png')} style={styles.chevron}></Image>
+            return (
+                <Image source={require('../../assets/angle_right.png')} style={styles.chevron}></Image>
+            )
+        }
+    }
+    
+    _renderSubText() {
+        if(this.props.subText) {
+            return (
+                <Text style={styles.subText}>{this.props.subText}</Text>
+            )
         }
     }
 
@@ -23,7 +33,7 @@ export default class ItemCell extends Component {
             return (
                 <View style={[this.props.iconStyle, styles.iconContainer]}>
                     <View style={styles.paddingView} />
-                    <Image style={[styles.icon]}
+                    <Image style={styles.icon}
                         source={this.props.icon}
                         resizeMode='cover'
                         />
@@ -49,7 +59,7 @@ export default class ItemCell extends Component {
             <TouchableHighlight {...touchableProps}
                 underlayColor='#D9D9D9'
                 style={styles.container}>
-                <View style={styles.viewContainer}>
+                <View style={[this.props.containerStyle, styles.viewContainer]}>
                     <View style={styles.leftContainer}>
                         {this._renderIcon() }
                     </View>
@@ -58,6 +68,7 @@ export default class ItemCell extends Component {
                             <Text style={styles.text}>
                                 {this.props.children}
                             </Text>
+                            {this._renderSubText()}
                             {this._renderDisclosureIndicator() }
                         </View>
                     </View>
@@ -78,12 +89,12 @@ ItemCell.propTypes = {
             uri: PropTypes.string,
         }),
     ]),
-    iconStyle: PropTypes.object
+    iconStyle: PropTypes.object,
+    containerStyle: PropTypes.object
 }
 
 const styles = StyleSheet.create({
     container: {
-        ...styleUtils.itemCell,
         flex: 1,
         flexDirection: 'row',
     },
@@ -120,6 +131,11 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 16,
         alignSelf: 'center',
+    },
+    subText: {
+        marginRight: 5,
+        fontSize: 14,        
+        color: '#8e8e93' 
     },
     chevron: {
         width: 23,

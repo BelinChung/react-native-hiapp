@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "apsl-react-native-button": "^2.5.0",
+    "lodash": "^4.13.1",
     "moment": "^2.13.0",
     "react": "^0.14.8",
     "react-native": "^0.25.1",

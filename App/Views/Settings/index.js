@@ -34,21 +34,24 @@ export default class SettingsView extends Component {
                 <ItemCell
                     showDisclosureIndicator={true}
                     showBottomBorder={false}
-                    iconStyle={iconColor.feedbackIcon}
+                    iconStyle={itemCellColor.feedbackIcon}
+                    containerStyle={itemCellColor.container}
                     icon={require('../../assets/feedback.png')}>
                     Feedback
                 </ItemCell>
                 <ItemCell
                     showDisclosureIndicator={true}
                     showBottomBorder={false}
-                    iconStyle={iconColor.languageIcon}
+                    iconStyle={itemCellColor.languageIcon}
+                    containerStyle={itemCellColor.container}
                     icon={require('../../assets/language.png')}>
                     Language
                 </ItemCell>
                 <ItemCell
                     showDisclosureIndicator={true}
                     showBottomBorder={false}
-                    iconStyle={iconColor.aboutIcon}
+                    iconStyle={itemCellColor.aboutIcon}
+                    containerStyle={itemCellColor.container}
                     icon={require('../../assets/about.png')}>
                     About
                 </ItemCell>
@@ -60,7 +63,8 @@ export default class SettingsView extends Component {
     }
 } 
 
-const iconColor = {
+const itemCellColor = {
+    container: styleUtils.itemCell,
     feedbackIcon: {
         backgroundColor: '#38b57f' 
     },

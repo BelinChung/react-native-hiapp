@@ -11,6 +11,7 @@ import styleUtils from '../../Styles'
 
 import HomeView from '../../Views/Home' 
 import SettingsView from '../../Views/Settings' 
+import ContactsView from '../../Views/Contacts' 
 
 const tabIconfont = {
     Home: 'E61A',
@@ -33,17 +34,9 @@ export default class TabBarComp extends Component {
         return (  
             <TabNavigator hidesTabTouch={true} sceneStyle={styles.sceneStyle}>  
                 {this._renderTabItem('Home', <HomeView/>)}  
-                {this._renderTabItem('Contacts', this._createChildView('DDD'))}  
+                {this._renderTabItem('Contacts', <ContactsView/>)}  
                 {this._renderTabItem('Settings', <SettingsView/>)} 
             </TabNavigator>  
-        )
-    }
-    
-    _createChildView(tag) {
-        return (
-            <ScrollView contentContainerStyle={{backgroundColor:'#00baff',alignItems:'center',justifyContent:'center'}}>
-                <Text style={{fontSize:22}}>{tag}</Text>
-            </ScrollView>
         )
     }
     

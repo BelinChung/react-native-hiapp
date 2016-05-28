@@ -11,10 +11,7 @@ import moment from 'moment'
 import GiftedListView from 'react-native-gifted-listview'
 import {ajax} from '../../Network'
 import styleUtils from '../../Styles'
-
-function getAvatarUrl(ID) {
-    return 'http://lorempixel.com/68/68/people/' + ID
-}
+import {getAvatarUrl} from '../../Utils'
 
 export default class HomeView extends Component {
     constructor(props) {

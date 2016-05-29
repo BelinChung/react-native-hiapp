@@ -13,7 +13,7 @@ import AboutView from '../../Views/About'
 export default class NavigatorComp extends Component {
     render() {
         let style = {
-            paddingTop: 64
+            paddingTop: Platform.OS === 'android' ? 56 : 64
         }
         return (
             <Navigator

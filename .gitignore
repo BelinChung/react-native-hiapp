@@ -4,7 +4,7 @@
 
 # Xcode
 #
-ios/build/*
+build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -27,6 +27,7 @@ project.xcworkspace
 .idea
 .gradle
 local.properties
+android/keystores/
 
 # VS Code
 #

@@ -5,29 +5,6 @@ import React, {
   View
 } from 'react-native'
 
-import NavBarComp from './App/Components/NavBar'
-import TabBarComp from './App/Components/TabBar'
+import NavigatorComp from './App/Components/Navigator'
 
-class HiApp extends Component{
-    constructor(props) {
-        super(props)
-        this.state = {}
-    }
-
-    render() {
-        return (
-            <View style={styles.container}>  
-                <NavBarComp /> 
-                <TabBarComp />
-            </View> 
-        )
-    }
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-})
-
-AppRegistry.registerComponent('RN_HiApp', () => HiApp)
+AppRegistry.registerComponent('RN_HiApp', () => NavigatorComp)

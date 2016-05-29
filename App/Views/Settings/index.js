@@ -7,6 +7,8 @@ import React, {
     TouchableHighlight
 } from 'react-native'
 
+import capitalize from 'lodash/capitalize'
+
 import ItemCell from '../../Components/ItemCell'
 import Button from 'apsl-react-native-button'
 import styleUtils from '../../Styles'
@@ -48,6 +50,7 @@ export default class SettingsView extends Component {
                     Language
                 </ItemCell>
                 <ItemCell
+                    onPress={this._gotoView.bind(this, 'about')}
                     showDisclosureIndicator={true}
                     showBottomBorder={false}
                     iconStyle={itemCellColor.aboutIcon}
@@ -60,6 +63,13 @@ export default class SettingsView extends Component {
                 </Button>
             </View>
         )
+    }
+    
+    _gotoView(view) {
+        this.props.navigator.push({
+            title: capitalize(view),
+            id: view
+        })    
     }
 } 
 

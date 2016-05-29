@@ -58,8 +58,8 @@ export default class ItemCell extends Component {
         return (
             <TouchableHighlight {...touchableProps}
                 underlayColor='#D9D9D9'
-                style={styles.container}>
-                <View style={[this.props.containerStyle, styles.viewContainer]}>
+                style={[styles.container, this.props.containerStyle]}>
+                <View style={styles.viewContainer}>
                     <View style={styles.leftContainer}>
                         {this._renderIcon() }
                     </View>

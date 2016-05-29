@@ -1,6 +1,5 @@
 import React, {
   Component,
-  AppRegistry,
   StyleSheet,
   View
 } from 'react-native'
@@ -16,7 +15,7 @@ export default class IndexView extends Component{
     render() {
         return (
             <View style={styles.container}>  
-                <TabBarComp />
+                <TabBarComp navigator={this.props.navigator}/>
             </View> 
         )
     }

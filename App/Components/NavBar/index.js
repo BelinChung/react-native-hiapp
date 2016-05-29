@@ -33,20 +33,26 @@ const styles = {
         justifyContent: 'center'
     },
     buttonText: {
+        fontSize: 16, 
+        color: '#333'
+    },
+    buttonIconFontText: {
         fontSize: 26, 
-        color: '#333', 
-        fontWeight: '400',
         fontFamily: 'iconfont'
     }
 }
 
 function _renderBarButton(text, handler, icon = false) {
-    if(icon) text = iconfontConf(text)
+    let buttonStyle = styles.buttonText 
+    if(icon) { 
+        text = iconfontConf(text)
+        buttonStyle = [styles.buttonText, styles.buttonIconFontText] 
+    }
     return (
         <TouchableOpacity
             onPress={handler}
             style={styles.button}>
-            <Text style={styles.buttonText}>{text}</Text>
+            <Text style={buttonStyle}>{text}</Text>
         </TouchableOpacity>
     )
 }
@@ -54,17 +60,21 @@ function _renderBarButton(text, handler, icon = false) {
 export default function renderNavBar() {
     let routeMapper = {
         LeftButton(route, navigator, index, navState) {
-            switch (index) {
-            case 0:
+            switch (route.id) {
+            case 'index':
                 return _renderBarButton('uniE603', function(){}, true)
+            case 'about':
+                return _renderBarButton('Back', () => navigator.pop())
             default:
                 break
             }
         },
         RightButton(route, navigator, index, navState) {
-            switch (index) {
-            case 0:
+            switch (route.id) {
+            case 'index':
                 return _renderBarButton('uniE604', function(){}, true)
+            case 'about':
+                return null
             default:
                 break
             }

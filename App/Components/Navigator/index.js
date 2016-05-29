@@ -5,8 +5,10 @@ import React, {
     Platform
 } from 'react-native'
 
-import IndexView from '../../Views/Index'
 import renderNavBar from '../NavBar'
+
+import IndexView from '../../Views/Index'
+import AboutView from '../../Views/About'
 
 export default class NavigatorComp extends Component {
     render() {
@@ -15,7 +17,7 @@ export default class NavigatorComp extends Component {
         }
         return (
             <Navigator
-                initialRoute={{name: 'indexView', index: 0}}
+                initialRoute={{name: 'indexView', index: 0, id: 'index'}}
                 configureScene={this._configureScene}
                 renderScene={this._renderScene} 
                 navigationBar={renderNavBar()}
@@ -25,16 +27,17 @@ export default class NavigatorComp extends Component {
     }
 
     _renderScene(route, navigator) {
-        let name = route.name
-        switch (name) {
-        case 'indexView':
-            return (<IndexView/>)
+        switch (route.id) {
+        case 'index':
+            return (<IndexView navigator={navigator}/>)
+        case 'about':
+            return (<AboutView navigator={navigator}/>)
         default:
             break
         }
     }
 
     _configureScene(route, routeStack) {
-        return Navigator.SceneConfigs.VerticalDownSwipeJump
+        return Navigator.SceneConfigs.PushFromRight
     }
 } 

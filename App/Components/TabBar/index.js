@@ -35,7 +35,7 @@ export default class TabBarComp extends Component {
             <TabNavigator hidesTabTouch={true} sceneStyle={styles.sceneStyle}>  
                 {this._renderTabItem('Home', <HomeView/>)}  
                 {this._renderTabItem('Contacts', <ContactsView/>)}  
-                {this._renderTabItem('Settings', <SettingsView/>)} 
+                {this._renderTabItem('Settings', <SettingsView navigator={this.props.navigator}/>)} 
             </TabNavigator>  
         )
     }

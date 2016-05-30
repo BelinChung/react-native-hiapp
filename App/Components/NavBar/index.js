@@ -28,7 +28,7 @@ const styles = {
     },
     button: {
         flex: 1, 
-        width: 50, 
+        width: 35, 
         alignItems: 'center', 
         justifyContent: 'center'
     },
@@ -42,17 +42,17 @@ const styles = {
     }
 }
 
-function _renderBarButton(text, handler, icon = false) {
-    let buttonStyle = styles.buttonText 
+function _renderBarButton(text, handler, icon = false, buttonStyle = {}, buttonTextStyle = {}) {
+    let buttonText = [styles.buttonText, buttonTextStyle] 
     if(icon) { 
         text = iconfontConf(text)
-        buttonStyle = [styles.buttonText, styles.buttonIconFontText] 
+        buttonText = [buttonText, styles.buttonIconFontText] 
     }
     return (
         <TouchableOpacity
             onPress={handler}
-            style={styles.button}>
-            <Text style={buttonStyle}>{text}</Text>
+            style={[styles.button, buttonStyle]}>
+            <Text style={buttonText}>{text}</Text>
         </TouchableOpacity>
     )
 }
@@ -62,9 +62,9 @@ export default function renderNavBar() {
         LeftButton(route, navigator, index, navState) {
             switch (route.id) {
             case 'index':
-                return _renderBarButton('uniE603', function(){}, true)
+                return null
             case 'about':
-                return _renderBarButton('Back', () => navigator.pop())
+                return _renderBarButton('uniE617', () => navigator.pop(), true)
             default:
                 break
             }
@@ -72,7 +72,9 @@ export default function renderNavBar() {
         RightButton(route, navigator, index, navState) {
             switch (route.id) {
             case 'index':
-                return _renderBarButton('uniE604', function(){}, true)
+                return _renderBarButton('uniE60B', function(){}, true, {
+                    width: 50
+                })
             case 'about':
                 return null
             default:

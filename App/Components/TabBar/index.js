@@ -14,12 +14,12 @@ import SettingsView from '../../Views/Settings'
 import ContactsView from '../../Views/Contacts' 
 
 const tabIconfont = {
-    Home: 'E61A',
-    Contacts: 'E606',
-    Settings: 'E60D',
-    HomeSelected: 'E619',
-    ContactsSelected: 'E61B',
-    SettingsSelected: 'E60C'
+    Home: 'E613',
+    Contacts: 'E60D',
+    Settings: 'E610',
+    HomeSelected: 'E602',
+    ContactsSelected: 'E614',
+    SettingsSelected: 'E60F'
 }
 
 export default class TabBarComp extends Component {

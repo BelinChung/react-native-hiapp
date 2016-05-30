@@ -22,7 +22,7 @@ export default class ContactsView extends Component {
         return (
             <GiftedListView
                 customStyles={customStyles}
-                rowView={this._renderRowView}
+                rowView={this._renderRowView.bind(this)}
                 onFetch={this._onFetch}
                 firstLoader={true}
                 pagination={true}
@@ -49,15 +49,16 @@ export default class ContactsView extends Component {
         })
     }
 
-    _renderRowView(conatct) {
+    _renderRowView(contact) {
         return (
             <ItemCell
-                subText={conatct.location}
+                onPress={this._gotoMessageView.bind(this, {nickename: contact.nickname})}
+                subText={contact.location}
                 showDisclosureIndicator={true}
                 showBottomBorder={true}
                 iconStyle={customStyles.itemCellIcon}
-                icon={{ uri: getAvatarUrl(conatct.avatar) }}>
-                {conatct.nickname}
+                icon={{ uri: getAvatarUrl(contact.avatar) }}>
+                {contact.nickname}
             </ItemCell>
         )
     }
@@ -76,6 +77,14 @@ export default class ContactsView extends Component {
                 </Text>
             </View>
         )
+    }
+    
+    _gotoMessageView(params) {
+        this.props.navigator.push({
+            title: params.nickename,
+            id: 'message',
+            params: params
+        })    
     }
 }
 

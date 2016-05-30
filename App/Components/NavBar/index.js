@@ -63,10 +63,8 @@ export default function renderNavBar() {
             switch (route.id) {
             case 'index':
                 return null
-            case 'about':
-                return _renderBarButton('uniE617', () => navigator.pop(), true)
             default:
-                break
+                return _renderBarButton('uniE617', () => navigator.pop(), true)
             }
         },
         RightButton(route, navigator, index, navState) {

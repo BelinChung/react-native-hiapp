@@ -9,6 +9,7 @@ import renderNavBar from '../NavBar'
 
 import IndexView from '../../Views/Index'
 import AboutView from '../../Views/About'
+import MessageView from '../../Views/Message'
 
 export default class NavigatorComp extends Component {
     render() {
@@ -32,6 +33,8 @@ export default class NavigatorComp extends Component {
             return (<IndexView navigator={navigator}/>)
         case 'about':
             return (<AboutView navigator={navigator}/>)
+        case 'message':
+            return (<MessageView {...route.params} navigator={navigator}/>)
         default:
             break
         }

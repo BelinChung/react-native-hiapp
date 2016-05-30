@@ -44,6 +44,7 @@
   ```
   $ react-native run-android
   ```
+
 ## License
 
 Copyright (c) 2016 Belin Chung. MIT Licensed, see [LICENSE](https://github.com/BelinChung/react-native-hiapp/blob/master/LICENSE) for details.

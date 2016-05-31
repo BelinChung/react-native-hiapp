@@ -18,7 +18,7 @@
     "moment": "^2.13.0",
     "react": "^0.14.8",
     "react-native": "^0.25.1",
-    "react-native-extra-dimensions-android": "^0.17.0",
+    "react-native-extra-dimensions-android": "git+https://github.com/BelinChung/react-native-extra-dimensions-android.git#d745f46",
     "react-native-gifted-listview": "^0.0.15",
     "react-native-gifted-messenger": "^0.1.4",
     "react-native-tab-navigator": "^0.3.2"

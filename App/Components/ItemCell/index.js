@@ -9,8 +9,6 @@ import React, {
     Component
 } from 'react-native'
 
-import styleUtils from '../../Styles'
-
 export default class ItemCell extends Component {
     _renderDisclosureIndicator() {
         if (this.props.showDisclosureIndicator) {

@@ -1,5 +1,4 @@
 import React, {
-    View,
     Navigator,
     Component,
     Platform

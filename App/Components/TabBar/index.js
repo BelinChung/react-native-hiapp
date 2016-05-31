@@ -1,7 +1,6 @@
 import React, {
   Component,
   StyleSheet,
-  ScrollView,
   Text
 } from 'react-native'
 

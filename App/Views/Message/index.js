@@ -1,10 +1,7 @@
 import React, {
     Linking,
     Platform,
-    ActionSheetIOS,
     Dimensions,
-    View,
-    Text,
     Navigator,
     Component
 } from 'react-native'
@@ -24,9 +21,9 @@ function _getUniqueId() {
     return Math.round(Math.random() * 10000)          
 }
 
-function _formate(msg) {
+function _format(msg) {
     let messages = []
-    msg.forEach((item, index) => {
+    msg.forEach(item => {
         let avatar, position 
         if(item.from === 'received') {
             position = 'left'
@@ -89,7 +86,7 @@ export default class MessageView extends Component {
             url: 'message.json'
         }).then(res => {
             if(!res.err_code) {
-                callback(_formate(res.data))    
+                callback(_format(res.data))    
             }
         })
     }
@@ -152,8 +149,8 @@ export default class MessageView extends Component {
         ajax({
             url: 'history_message.json'
         }).then(res => {
-            if(!res.err_code) {
-                let earlierMsg = _formate(res.data)    
+            if(!res['err_code']) {
+                let earlierMsg = _format(res.data)    
                 this.setMessages(earlierMsg.concat(this._messages))
                 this.setState({
                     isLoadingEarlierMessages: false,

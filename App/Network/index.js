@@ -6,7 +6,7 @@ function _param(obj = {}) {
 }
 
 function _networkDone(res) {
-    if (!res.err_code) {
+    if (!res['err_code']) {
         return res
     } else {
         return Promise.reject(res)

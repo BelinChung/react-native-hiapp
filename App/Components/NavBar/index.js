@@ -63,6 +63,11 @@ export default function renderNavBar() {
             switch (route.id) {
             case 'index':
                 return null
+            case 'tweet':
+                return _renderBarButton('Cancel', () => navigator.pop(), false, {
+                    width: 50,
+                    marginLeft: 10
+                })
             default:
                 return _renderBarButton('uniE617', () => navigator.pop(), true)
             }
@@ -70,11 +75,21 @@ export default function renderNavBar() {
         RightButton(route, navigator, index, navState) {
             switch (route.id) {
             case 'index':
-                return _renderBarButton('uniE60B', function(){}, true, {
+                return _renderBarButton('uniE601', () => {
+                    navigator.push({
+                        title: 'New Tweet',
+                        id: 'tweet'
+                    })    
+                }, true, {
                     width: 50
                 })
             case 'about':
                 return null
+            case 'tweet':
+                return _renderBarButton('Send', route.sendTweet, false, {
+                    width: 50,
+                    marginRight: 7
+                })
             default:
                 break
             }

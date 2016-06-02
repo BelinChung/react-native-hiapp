@@ -9,6 +9,7 @@ import renderNavBar from '../NavBar'
 import IndexView from '../../Views/Index'
 import AboutView from '../../Views/About'
 import MessageView from '../../Views/Message'
+import TweetView from '../../Views/Tweet'
 
 export default class NavigatorComp extends Component {
     render() {
@@ -34,12 +35,19 @@ export default class NavigatorComp extends Component {
             return (<AboutView navigator={navigator}/>)
         case 'message':
             return (<MessageView {...route.params} navigator={navigator}/>)
+        case 'tweet':
+            return (<TweetView navigator={navigator} route={route}/>)
         default:
             break
         }
     }
 
     _configureScene(route, routeStack) {
-        return Navigator.SceneConfigs.PushFromRight
+        switch (route.id) {
+        case 'tweet':
+            return Navigator.SceneConfigs.FloatFromBottom
+        default:
+            return Navigator.SceneConfigs.PushFromRight
+        }
     }
 } 

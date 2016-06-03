@@ -34,6 +34,7 @@ export default class SettingsView extends Component {
                     </View>
                 </TouchableHighlight>
                 <ItemCell
+                    onPress={this._gotoView.bind(this, 'feedback')}
                     showDisclosureIndicator={true}
                     showBottomBorder={false}
                     iconStyle={itemCellColor.feedbackIcon}

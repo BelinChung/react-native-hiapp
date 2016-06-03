@@ -8,7 +8,7 @@ import React, {
 import styleUtils from '../../Styles'
 import Editor from '../../Components/Editor'
 
-export default class TweetView extends Component{
+export default class FeedbackView extends Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -17,23 +17,24 @@ export default class TweetView extends Component{
     }
     
     componentWillMount() {
-        this.props.route.sendTweet = this.sendTweet.bind(this)
+        this.props.route.sendFeedback = this.sendFeedback.bind(this)
     }
 
     render() {
         return (
             <View style={styles.container}>  
                 <Editor
+                    enableTools={'emotion'}
                     onChangeText={this.onChangeText.bind(this)} 
-                    placeholder={'What\'s happening'}
+                    placeholder={'Hi, Any suggestion to tell us?'}
                     text={this.state.text}/>    
             </View> 
         )
     }
     
-    sendTweet() {
+    sendFeedback() {
         Alert.alert(
-            'Sent successfully',
+            'Thank your for your feedback',
             this.state.text,
             [
                 {text: 'OK', onPress: () => this.props.navigator.pop()}

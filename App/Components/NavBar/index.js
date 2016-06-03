@@ -90,6 +90,10 @@ export default function renderNavBar() {
                     width: 50,
                     marginRight: 7
                 })
+            case 'feedback':
+                return _renderBarButton('uniE603', route.sendFeedback, true, {
+                    paddingRight: 5
+                })
             default:
                 break
             }

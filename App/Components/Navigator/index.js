@@ -10,6 +10,7 @@ import IndexView from '../../Views/Index'
 import AboutView from '../../Views/About'
 import MessageView from '../../Views/Message'
 import TweetView from '../../Views/Tweet'
+import FeedbackView from '../../Views/Feedback'
 
 export default class NavigatorComp extends Component {
     render() {
@@ -37,6 +38,8 @@ export default class NavigatorComp extends Component {
             return (<MessageView {...route.params} navigator={navigator}/>)
         case 'tweet':
             return (<TweetView navigator={navigator} route={route}/>)
+        case 'feedback':
+            return (<FeedbackView navigator={navigator} route={route}/>)
         default:
             break
         }

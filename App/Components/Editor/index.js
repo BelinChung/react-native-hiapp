@@ -22,37 +22,48 @@ export default class EditorComp extends Component {
         return (
             <View>
                 <TextInput
-                    placeholder={'What\'s happening'}
+                    placeholder={this.props.placeholder}
                     multiline={true}
                     style={styles.textInput}
                     value={this.props.text}
                     onChangeText={this.props.onChangeText}
                 />
                 <View style={styles.toolbar}>
-                    <TouchableHighlight style={styles.tool}>
-                        <Text style={styles.toolText}>{iconfontConf('uniE611')}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight style={styles.tool}>
-                        <Text style={styles.toolText}>{iconfontConf('uniE609')}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight style={styles.tool}>
-                        <Text style={styles.toolText}>{iconfontConf('uniE607')}</Text>
-                    </TouchableHighlight> 
-                    <TouchableHighlight style={styles.tool}>
-                        <Text style={styles.toolText}>{iconfontConf('uniE61A')}</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight style={styles.tool}>
-                        <Text style={styles.toolText}>{iconfontConf('uniE61B')}</Text>
-                    </TouchableHighlight>    
+                    {this._renderTool('camera', 'uniE611')}
+                    {this._renderTool('album', 'uniE609')}
+                    {this._renderTool('emotion', 'uniE607')}
+                    {this._renderTool('at', 'uniE61A')}
+                    {this._renderTool('location', 'uniE61B')}
                 </View>
             </View>
         )   
+    }
+    
+    _renderTool(tool, icon, handle = () => {}) {
+        if(this._enableTool(tool)) {
+            return (
+                <TouchableHighlight style={styles.tool}>
+                    <Text style={styles.toolText}>{iconfontConf(icon)}</Text>
+                </TouchableHighlight>
+            )
+        }    
+    }
+    
+    _enableTool(tool) {
+        let list = this.props.enableTools
+        return ~list.trim().indexOf(tool)
     }      
 }
 
 EditorComp.propTypes = {
+    enableTools: PropTypes.string,
     text: PropTypes.string,
+    placeholder: PropTypes.string,
     onChangeText: PropTypes.func
+}
+
+EditorComp.defaultProps = {
+    enableTools: 'camera, album, emotion, at, location'    
 }
 
 const styles = StyleSheet.create({

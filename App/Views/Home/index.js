@@ -16,7 +16,9 @@ import {getAvatarUrl} from '../../Utils'
 export default class HomeView extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            timeline: []
+        }
     }
     
     render() {
@@ -25,7 +27,7 @@ export default class HomeView extends Component {
                 enableEmptySections={true}
                 customStyles={customStyles}
                 rowView={this._renderRowView.bind(this)}
-                onFetch={this._onFetch}
+                onFetch={this._onFetch.bind(this)}
                 firstLoader={true}
                 pagination={true} 
                 refreshable={true} 
@@ -35,13 +37,40 @@ export default class HomeView extends Component {
     }
     
     _onFetch(page = 1, callback, options) {
-        ajax({
-            url: 'timeline.json'
-        }).then(res => {
-            if(!res.err_code) {
-                callback(res.data)    
-            }
-        })
+        if(page === 1 && options.firstLoad) {
+            ajax({
+                url: 'timeline.json'
+            }).then(res => {
+                if(!res.err_code) {
+                    this.setState({
+                        timeline: res.data,
+                    })
+                    callback(this.state.timeline)    
+                }
+            })
+        } else if(page === 1 && !options.firstLoad) {
+            ajax({
+                url: 'refresh_timeline.json'
+            }).then(res => {
+                if(!res.err_code) {
+                    let oldTimeline = this.state.timeline
+                    this.setState({
+                        timeline: res.data.concat(oldTimeline)
+                    })
+                    callback(this.state.timeline)    
+                }
+            })
+        } else {
+            ajax({
+                url: 'more_timeline.json'
+            }).then(res => {
+                if(!res.err_code) {
+                    callback(res.data, {
+                        allLoaded: true
+                    })    
+                }
+            })
+        }
     }
     
     _renderRowView(info) {
@@ -53,7 +82,7 @@ export default class HomeView extends Component {
                         <View>
                             <View style={styles.userContainer}>
                                 <Text style={styles.name}>{info.nickname}</Text>
-                                <Text style={styles.time}>{moment(info.created_at * 1000).fromNow()}</Text>
+                                <Text style={styles.time}>{'#' + info.id + ' '} {moment(info.created_at * 1000).fromNow()}</Text>
                             </View>
                         </View>
                     </View>

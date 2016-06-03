@@ -22,6 +22,7 @@ export default class HomeView extends Component {
     render() {
         return (
             <GiftedListView
+                enableEmptySections={true}
                 customStyles={customStyles}
                 rowView={this._renderRowView}
                 onFetch={this._onFetch}

@@ -21,6 +21,7 @@ export default class ContactsView extends Component {
     render() {
         return (
             <GiftedListView
+                enableEmptySections={true}
                 customStyles={customStyles}
                 rowView={this._renderRowView.bind(this)}
                 onFetch={this._onFetch}

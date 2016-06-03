@@ -20,38 +20,58 @@ export default {
     card: {
         tweetContainer: {
             ...itemCell,
-            flexDirection: 'row',
-            alignItems: 'center',
             backgroundColor: 'white',
-            paddingTop: 4,
-            paddingBottom: 10
+            flex: 1
+        },
+        topContainer: {
+            flex: 1,
+            flexDirection: 'row',
+            padding: 10,
+            borderColor: '#e1e1e1',
+            borderBottomWidth: 1
         },
         avatar: {
             backgroundColor: 'gray',
-            width: 50,
-            height: 50,
-            marginLeft: 10,
-            borderRadius: 4
-        },
-        userContainer: {
-            flexDirection: 'row'
+            width: 35,
+            height: 35,
+            borderRadius: 4,
+            marginRight: 6
         },
         time: {
-            marginLeft: 4,
             fontSize: 13,
             color: '#8999a5',
             marginTop: 2
         },
         name: {
+            color: '#ff9630',
             fontWeight: '600',
-            fontSize: 15
+            fontSize: 14
         },
-        text: {
-            marginTop: 5
+        middleContainer: {
+            padding: 10,
+            borderColor: '#e1e1e1',
+            borderBottomWidth: 1
         },
-        rightContainer: {
+        msgImage: {
             flex: 1,
-            padding: 10
+            marginTop: 10,
+            height: 200,
+            backgroundColor: '#e1e1e1'   
+        },
+        bottomContainer: {
+            flexDirection: 'row',
+            height: 40,
+            backgroundColor: '#fafafa'
+        },
+        bottomTool: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        bottomToolText: {
+            color: '#6D6D78',
+            fontWeight: '500',
+            alignItems: 'center'
         }
     }
 }

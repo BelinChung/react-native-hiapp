@@ -24,7 +24,7 @@ export default class HomeView extends Component {
             <GiftedListView
                 enableEmptySections={true}
                 customStyles={customStyles}
-                rowView={this._renderRowView}
+                rowView={this._renderRowView.bind(this)}
                 onFetch={this._onFetch}
                 firstLoader={true}
                 pagination={true} 
@@ -48,17 +48,41 @@ export default class HomeView extends Component {
         return (
             <TouchableHighlight underlayColor='transparent'>
                 <View style={styles.tweetContainer}>
-                    <Image source={{uri: getAvatarUrl(info.avatar)}} style={styles.avatar} />
-                    <View style={styles.rightContainer}>
-                        <View style={styles.userContainer}>
-                        <Text style={styles.name}>{info.nickname}</Text>
-                        <Text style={styles.time}>{moment(info.created_at * 1000).fromNow()}</Text>
+                    <View style={styles.topContainer}>
+                        <Image source={{uri: getAvatarUrl(info.avatar)}} style={styles.avatar} />                
+                        <View>
+                            <View style={styles.userContainer}>
+                                <Text style={styles.name}>{info.nickname}</Text>
+                                <Text style={styles.time}>{moment(info.created_at * 1000).fromNow()}</Text>
+                            </View>
                         </View>
-                        <Text style={styles.text}>{info.text}</Text>
+                    </View>
+                    <View style={styles.middleContainer}>
+                        <Text>{info.text}</Text>
+                        {this._renderMsgImage(info)}
+                    </View>
+                    <View style={styles.bottomContainer}>
+                        <TouchableHighlight style={styles.bottomTool}>
+                            <Text style={styles.bottomToolText}>Forward</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight style={styles.bottomTool}>
+                            <Text style={styles.bottomToolText}>Comment</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight style={styles.bottomTool}>
+                            <Text style={styles.bottomToolText}>Like</Text>
+                        </TouchableHighlight>
                     </View>
                 </View>
             </TouchableHighlight>
         )
+    }
+    
+    _renderMsgImage(info) {
+        if(info.original_pic) {
+            return (
+                <Image source={{uri: info.original_pic}} style={[styles.msgImage, { resizeMode: Image.resizeMode.cover }]} />
+            )
+        }
     }
 }
 

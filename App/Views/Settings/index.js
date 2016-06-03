@@ -87,21 +87,50 @@ const itemCellColor = {
     }
 }
 
-const Styles = StyleSheet.create(Object.assign({},
-    styleUtils.card,
-    {
-        ponit: {
-            marginLeft: 0    
-        },
-        logoutButton: {
-            backgroundColor: '#ff3b30',
-            borderWidth: 0,
-            margin: 10,
-            marginTop: 20
-        },
-        logoutButtonFontsize: {
-            fontSize: 18,
-            color: 'white'
-        }
+const Styles = StyleSheet.create({
+    tweetContainer: {
+        ...styleUtils.itemCell,
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        paddingTop: 4,
+        paddingBottom: 10
+    },
+    avatar: {
+        backgroundColor: 'gray',
+        width: 50,
+        height: 50,
+        marginLeft: 10,
+        borderRadius: 4
+    },
+    userContainer: {
+        flexDirection: 'row'
+    },
+    time: {
+        marginLeft: 4,
+        fontSize: 13,
+        color: '#8999a5',
+        marginTop: 2
+    },
+    name: {
+        fontWeight: '600',
+        fontSize: 15
+    },
+    rightContainer: {
+        flex: 1,
+        padding: 10
+    },
+    ponit: {
+        marginLeft: 0    
+    },
+    logoutButton: {
+        backgroundColor: '#ff3b30',
+        borderWidth: 0,
+        margin: 10,
+        marginTop: 20
+    },
+    logoutButtonFontsize: {
+        fontSize: 18,
+        color: 'white'
     }
-))
+})

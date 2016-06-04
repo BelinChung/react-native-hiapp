@@ -11,6 +11,7 @@ import AboutView from '../../Views/About'
 import MessageView from '../../Views/Message'
 import TweetView from '../../Views/Tweet'
 import FeedbackView from '../../Views/Feedback'
+import WebViewView from '../../Views/WebView'
 
 export default class NavigatorComp extends Component {
     render() {
@@ -40,6 +41,8 @@ export default class NavigatorComp extends Component {
             return (<TweetView navigator={navigator} route={route}/>)
         case 'feedback':
             return (<FeedbackView navigator={navigator} route={route}/>)
+        case 'webview':
+            return (<WebViewView {...route.params} navigator={navigator}/>)
         default:
             break
         }
@@ -48,6 +51,7 @@ export default class NavigatorComp extends Component {
     _configureScene(route, routeStack) {
         switch (route.id) {
         case 'tweet':
+        case 'webview':
             return Navigator.SceneConfigs.FloatFromBottom
         default:
             return Navigator.SceneConfigs.PushFromRight

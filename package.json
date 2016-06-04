@@ -21,6 +21,7 @@
     "react-native-extra-dimensions-android": "git+https://github.com/BelinChung/react-native-extra-dimensions-android.git#d745f46",
     "react-native-gifted-listview": "^0.0.15",
     "react-native-gifted-messenger": "^0.1.4",
+    "react-native-parsed-text": "0.0.12",
     "react-native-tab-navigator": "^0.3.2"
   },
   "devDependencies": {

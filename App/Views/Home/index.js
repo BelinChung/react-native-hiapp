@@ -9,6 +9,7 @@ import React, {
 
 import moment from 'moment'
 import GiftedListView from 'react-native-gifted-listview'
+import ParsedText from 'react-native-parsed-text'
 import {ajax} from '../../Network'
 import styleUtils from '../../Styles'
 import {getAvatarUrl} from '../../Utils'
@@ -87,7 +88,10 @@ export default class HomeView extends Component {
                         </View>
                     </View>
                     <View style={styles.middleContainer}>
-                        <Text>{info.text}</Text>
+                        <ParsedText
+                            parse={
+                            [{type: 'url', style: customStyles.url, onPress: this._handleUrlPress.bind(this)}]}
+                        >{info.text}</ParsedText>
                         {this._renderMsgImage(info)}
                     </View>
                     <View style={styles.bottomContainer}>
@@ -113,11 +117,24 @@ export default class HomeView extends Component {
             )
         }
     }
+    
+    _handleUrlPress(url) {
+        this.props.navigator.push({
+            title: 'WebView',
+            id: 'webview',
+            params: {
+                url: url
+            }
+        })     
+    }
 }
 
 const customStyles = {
     paginationView: {
         ...styleUtils.containerBg
+    },
+    url: {
+        color: '#007aff'
     }
 }
 

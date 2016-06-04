@@ -1,7 +1,9 @@
 import React, {
     Navigator,
     Component,
-    Platform
+    Platform,
+    View,
+    StatusBar
 } from 'react-native'
 
 import renderNavBar from '../NavBar'
@@ -18,14 +20,21 @@ export default class NavigatorComp extends Component {
         let style = {
             paddingTop: Platform.OS === 'android' ? 56 : 64
         }
+        let statusBarStatus = Platform.OS === 'android'
         return (
-            <Navigator
-                initialRoute={{name: 'indexView', index: 0, id: 'index'}}
-                configureScene={this._configureScene}
-                renderScene={this._renderScene} 
-                navigationBar={renderNavBar()}
-                sceneStyle={style}
+            <View style={styles.container}>
+                <StatusBar
+                    hide={statusBarStatus}
+                    barStyle='default'
                 />
+                <Navigator
+                    initialRoute={{name: 'indexView', index: 0, id: 'index'}}
+                    configureScene={this._configureScene}
+                    renderScene={this._renderScene} 
+                    navigationBar={renderNavBar()}
+                    sceneStyle={style}
+                />
+            </View>
         )
     }
 
@@ -58,3 +67,9 @@ export default class NavigatorComp extends Component {
         }
     }
 } 
+
+const styles = {
+    container: {
+        flex: 1
+    }
+}

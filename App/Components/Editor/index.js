@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingTop: 5,
         paddingBottom: 5,
-        fontSize: 14    
+        fontSize: 14,
+        textAlignVertical: 'top'    
     },
     toolbar: {
         flexDirection: 'row',

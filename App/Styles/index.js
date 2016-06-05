@@ -20,8 +20,7 @@ export default {
     card: {
         tweetContainer: {
             ...itemCell,
-            backgroundColor: 'white',
-            flex: 1
+            backgroundColor: 'white'
         },
         topContainer: {
             flex: 1,

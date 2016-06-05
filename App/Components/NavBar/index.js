@@ -94,6 +94,10 @@ export default function renderNavBar() {
                 return _renderBarButton('uniE603', route.sendFeedback, true, {
                     paddingRight: 5
                 })
+            case 'tweetDetails':
+                return _renderBarButton('uniE60D', () => {}, true, {
+                    paddingRight: 5
+                })
             default:
                 break
             }

@@ -14,6 +14,7 @@ import MessageView from '../../Views/Message'
 import TweetView from '../../Views/Tweet'
 import FeedbackView from '../../Views/Feedback'
 import WebViewView from '../../Views/WebView'
+import TweetDetailsView from '../../Views/TweetDetails'
 
 export default class NavigatorComp extends Component {
     render() {
@@ -52,6 +53,8 @@ export default class NavigatorComp extends Component {
             return (<FeedbackView navigator={navigator} route={route}/>)
         case 'webview':
             return (<WebViewView {...route.params} navigator={navigator}/>)
+        case 'tweetDetails':
+            return (<TweetDetailsView {...route.params} navigator={navigator}/>)
         default:
             break
         }

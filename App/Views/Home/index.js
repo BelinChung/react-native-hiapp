@@ -76,7 +76,7 @@ export default class HomeView extends Component {
     
     _renderRowView(info) {
         return (
-            <TouchableHighlight underlayColor='transparent'>
+            <TouchableHighlight underlayColor='transparent' onPress={this._gotoDetails.bind(this, info)}>
                 <View style={styles.tweetContainer}>
                     <View style={styles.topContainer}>
                         <Image source={{uri: getAvatarUrl(info.avatar)}} style={styles.avatar} />                
@@ -126,6 +126,16 @@ export default class HomeView extends Component {
                 url: url
             }
         })     
+    }
+    
+    _gotoDetails(tweet) {
+        this.props.navigator.push({
+            title: 'Tweet',
+            id: 'tweetDetails',
+            params: {
+                tweet: tweet
+            }
+        })
     }
 }
 

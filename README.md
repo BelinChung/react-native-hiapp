@@ -3,7 +3,7 @@
 
 ## Previews
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/ogZjvBNeOJQ" frameborder="0" allowfullscreen></iframe>
+[![preview](https://i.imgur.com/WHmiSnl.png)](https://youtu.be/ogZjvBNeOJQ) 
 
 Mirrors: [秒拍](http://t.cn/R5qrq7H) 
 

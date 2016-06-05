@@ -95,7 +95,11 @@ export default function renderNavBar() {
                     paddingRight: 5
                 })
             case 'tweetDetails':
-                return _renderBarButton('uniE60D', () => {}, true, {
+                return _renderBarButton('uniE60D', route.comment, true, {
+                    paddingRight: 5
+                })
+            case 'comment':
+                return _renderBarButton('uniE603', route.sendComment, true, {
                     paddingRight: 5
                 })
             default:

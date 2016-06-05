@@ -24,6 +24,10 @@ export default class AboutView extends Component{
         }
     }
     
+    componentWillMount() {
+        this.props.route.comment = this._comment.bind(this)
+    }
+    
     componentDidMount() {
         ajax({
             url: 'comments.json'
@@ -88,6 +92,13 @@ export default class AboutView extends Component{
                 url: url
             }
         })     
+    }
+    
+    _comment() {
+        this.props.navigator.push({
+            title: 'Comment',
+            id: 'comment'
+        }) 
     }
 }
 

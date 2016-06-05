@@ -3,8 +3,9 @@
 
 ## Previews
 
-![demo](https://raw.githubusercontent.com/BelinChung/react-native-hiapp/master/DemoGifs/demo_v2.gif)
-![demo_2](https://raw.githubusercontent.com/BelinChung/react-native-hiapp/master/DemoGifs/demo_v2_2.gif)
+<iframe width="420" height="315" src="https://www.youtube.com/embed/ogZjvBNeOJQ" frameborder="0" allowfullscreen></iframe>
+
+Mirrors: [秒拍](http://t.cn/R5qrq7H) 
 
 ## Requirements
 

@@ -1,22 +1,16 @@
 import React, {
     View,
     Text,
-    Navigator,
+    Component,
     TouchableOpacity
 } from 'react-native'
 
+import NavigationBar from 'react-native-navbar'
 import iconfontConf from '../../Utils/iconfontConf'
 
 const styles = {
     navbar: {
-        alignItems: 'center',
-        backgroundColor: '#f7f7f8',
-        shadowOffset: {
-            width: 1,
-            height: 0.5,
-        },
-        shadowColor: '#000000',
-        shadowOpacity: 0.2,
+        alignItems: 'center'
     },
     title: {
         flex: 1, 
@@ -57,68 +51,85 @@ function _renderBarButton(text, handler, icon = false, buttonStyle = {}, buttonT
     )
 }
 
-export default function renderNavBar() {
-    let routeMapper = {
-        LeftButton(route, navigator, index, navState) {
-            switch (route.id) {
-            case 'index':
-                return null
-            case 'tweet':
-                return _renderBarButton('Cancel', () => navigator.pop(), false, {
-                    width: 50,
-                    marginLeft: 10
-                })
-            default:
-                return _renderBarButton('uniE617', () => navigator.pop(), true)
-            }
-        },
-        RightButton(route, navigator, index, navState) {
-            switch (route.id) {
-            case 'index':
-                return _renderBarButton('uniE601', () => {
-                    navigator.push({
-                        title: 'New Tweet',
-                        id: 'tweet'
-                    })    
-                }, true, {
-                    width: 50
-                })
-            case 'about':
-                return null
-            case 'tweet':
-                return _renderBarButton('Send', route.sendTweet, false, {
-                    width: 50,
-                    marginRight: 7
-                })
-            case 'feedback':
-                return _renderBarButton('uniE603', route.sendFeedback, true, {
-                    paddingRight: 5
-                })
-            case 'tweetDetails':
-                return _renderBarButton('uniE60D', route.comment, true, {
-                    paddingRight: 5
-                })
-            case 'comment':
-                return _renderBarButton('uniE603', route.sendComment, true, {
-                    paddingRight: 5
-                })
-            default:
-                break
-            }
-        },
-        Title(route, navigator, index, navState) {
-            return (
-                <View style={styles.title}>
-                    <Text style={styles.titleText}>{route.title ? route.title : 'HiApp'}</Text>
-                </View>
-            )
+export default class NavbarComp extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+
         }
     }
-    
-    return (
-        <Navigator.NavigationBar
-            style={styles.navbar}
-            routeMapper={routeMapper}
-        />
-    )
+
+    _leftButton() {
+        switch (this.props.route.id) {
+        case 'index':
+            return (<View></View>)
+        case 'tweet':
+            return _renderBarButton('Cancel', () => this.props.navigator.pop(), false, {
+                width: 50,
+                marginLeft: 10
+            })
+        default:
+            return _renderBarButton('uniE617', () => this.props.navigator.pop(), true)
+        }
+    }
+
+    _rightButton() {
+        switch (this.props.route.id) {
+        case 'index':
+            return _renderBarButton('uniE601', () => {
+                this.props.navigator.push({
+                    title: 'New Tweet',
+                    id: 'tweet'
+                })    
+            }, true, {
+                width: 50
+            })
+        case 'about':
+            return (<View></View>)
+        case 'tweet':
+            return _renderBarButton('Send', this.props.route.sendTweet, false, {
+                width: 50,
+                marginRight: 7
+            })
+        case 'feedback':
+            return _renderBarButton('uniE603', this.props.route.sendFeedback, true, {
+                paddingRight: 5
+            })
+        case 'tweetDetails':
+            return _renderBarButton('uniE60D', this.props.route.comment, true, {
+                paddingRight: 5
+            })
+        case 'comment':
+            return _renderBarButton('uniE603', this.props.route.sendComment, true, {
+                paddingRight: 5
+            })
+        default:
+            break
+        }
+    }
+
+    _title() {
+        return (
+            <View style={styles.title}>
+                <Text style={styles.titleText}>{this.props.route.title ? this.props.route.title : 'HiApp'}</Text>
+            </View>
+        )
+    }
+
+    render() {
+        return (
+            <NavigationBar
+                style={styles.navbar}
+                tintColor={'#f7f7f8'}
+                statusBar={{
+                    style: 'default',
+                    showAnimation: 'fade',
+                    tintColor: '#f7f7f8'
+                }}
+                leftButton={this._leftButton()}
+                rightButton={this._rightButton()}
+                title={this._title()}
+            />
+        )
+    }
 }

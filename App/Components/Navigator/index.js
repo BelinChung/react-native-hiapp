@@ -2,11 +2,10 @@ import React, {
     Navigator,
     Component,
     Platform,
-    View,
-    StatusBar
+    View
 } from 'react-native'
 
-import renderNavBar from '../NavBar'
+import NavbarComp from '../NavBar'
 
 import IndexView from '../../Views/Index'
 import AboutView from '../../Views/About'
@@ -19,22 +18,12 @@ import CommentView from '../../Views/Comment'
 
 export default class NavigatorComp extends Component {
     render() {
-        let style = {
-            paddingTop: Platform.OS === 'android' ? 56 : 64
-        }
-        let statusBarStatus = Platform.OS === 'android'
         return (
             <View style={styles.container}>
-                <StatusBar
-                    hide={statusBarStatus}
-                    barStyle='default'
-                />
                 <Navigator
                     initialRoute={{name: 'indexView', index: 0, id: 'index'}}
                     configureScene={this._configureScene}
                     renderScene={this._renderScene} 
-                    navigationBar={renderNavBar()}
-                    sceneStyle={style}
                 />
             </View>
         )
@@ -43,21 +32,61 @@ export default class NavigatorComp extends Component {
     _renderScene(route, navigator) {
         switch (route.id) {
         case 'index':
-            return (<IndexView navigator={navigator}/>)
+            return (
+                <View style={styles.container}>
+                    <NavbarComp route={route} navigator={navigator}/>
+                    <IndexView navigator={navigator}/>
+                </View>
+            )
         case 'about':
-            return (<AboutView navigator={navigator}/>)
+            return (
+                <View style={styles.container}>
+                    <NavbarComp route={route} navigator={navigator}/>
+                    <AboutView navigator={navigator}/>
+                </View>
+            )
         case 'message':
-            return (<MessageView {...route.params} navigator={navigator}/>)
+            return (
+                <View style={styles.container}>
+                    <NavbarComp route={route} navigator={navigator}/>
+                    <MessageView {...route.params} navigator={navigator}/>
+                </View>
+            )
         case 'tweet':
-            return (<TweetView navigator={navigator} route={route}/>)
+            return (
+                <View style={styles.container}>
+                    <NavbarComp route={route} navigator={navigator}/>
+                    <TweetView navigator={navigator} route={route}/>
+                </View>
+            )
         case 'feedback':
-            return (<FeedbackView navigator={navigator} route={route}/>)
+            return (
+                <View style={styles.container}>
+                    <NavbarComp route={route} navigator={navigator}/>
+                    <FeedbackView navigator={navigator} route={route}/>
+                </View>
+            )
         case 'webview':
-            return (<WebViewView {...route.params} navigator={navigator}/>)
+            return (
+                <View style={styles.container}>
+                    <NavbarComp route={route} navigator={navigator}/>
+                    <WebViewView {...route.params} navigator={navigator}/>
+                </View>
+            )
         case 'tweetDetails':
-            return (<TweetDetailsView {...route.params} navigator={navigator} route={route}/>)
+            return (
+                <View style={styles.container}>
+                    <NavbarComp route={route} navigator={navigator}/>
+                    <TweetDetailsView {...route.params} navigator={navigator} route={route}/>
+                </View>
+            )
         case 'comment':
-            return (<CommentView navigator={navigator} route={route}/>)
+            return (
+                <View style={styles.container}>
+                    <NavbarComp route={route} navigator={navigator}/>
+                    <CommentView navigator={navigator} route={route}/>
+                </View>
+            )
         default:
             break
         }

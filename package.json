@@ -22,6 +22,7 @@
     "react-native-gifted-listview": "^0.0.15",
     "react-native-gifted-messenger": "^0.1.4",
     "react-native-gifted-spinner": "0.0.4",
+    "react-native-navbar": "^1.5.0",
     "react-native-parsed-text": "0.0.12",
     "react-native-tab-navigator": "^0.3.2"
   },

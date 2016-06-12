@@ -3,8 +3,8 @@ import React, {
 } from 'react'
 
 import {
-  StyleSheet,
-  Text
+    StyleSheet,
+    Text
 } from 'react-native'
 
 import TabNavigator from 'react-native-tab-navigator'

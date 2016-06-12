@@ -3,11 +3,11 @@ import React, {
 } from 'react'
 
 import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  Image
+    StyleSheet,
+    ScrollView,
+    View,
+    Text,
+    Image
 } from 'react-native'
 
 import moment from 'moment'

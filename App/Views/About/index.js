@@ -3,10 +3,10 @@ import React, {
 } from 'react'
 
 import {
-  StyleSheet,
-  View,
-  Text,
-  Image
+    StyleSheet,
+    View,
+    Text,
+    Image
 } from 'react-native'
 
 import styleUtils from '../../Styles'

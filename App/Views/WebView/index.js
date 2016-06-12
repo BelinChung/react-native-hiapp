@@ -1,10 +1,10 @@
 import React, { 
-    Component     
+    Component,
+    PropTypes         
 } from 'react'
 
 import {
-  WebView,
-  PropTypes
+    WebView
 } from 'react-native'
 
 export default class WebViewView extends Component{

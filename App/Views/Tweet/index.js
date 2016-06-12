@@ -3,9 +3,9 @@ import React, {
 } from 'react'
 
 import {
-  StyleSheet,
-  View,
-  Alert
+    StyleSheet,
+    View,
+    Alert
 } from 'react-native'
 
 import styleUtils from '../../Styles'

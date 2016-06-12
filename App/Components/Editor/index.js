@@ -1,11 +1,14 @@
-import React, {
+import React, { 
+    Component,
+    PropTypes     
+} from 'react'
+
+import {
     View,
     Text,
     TextInput,
     TouchableHighlight,
-    PropTypes,
-    StyleSheet,
-    Component
+    StyleSheet
 } from 'react-native'
 
 import iconfontConf from '../../Utils/iconfontConf'

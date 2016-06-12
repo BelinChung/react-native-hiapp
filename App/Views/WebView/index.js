@@ -1,5 +1,8 @@
-import React, {
-  Component,
+import React, { 
+    Component     
+} from 'react'
+
+import {
   WebView,
   PropTypes
 } from 'react-native'

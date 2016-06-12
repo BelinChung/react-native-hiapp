@@ -1,10 +1,13 @@
-import React, {
+import React, { 
+    Component 
+} from 'react'
+
+import {
     View,
     Text,
     Image,
     ListView,
-    StyleSheet,
-    Component
+    StyleSheet
 } from 'react-native'
 
 import GiftedSpinner from 'react-native-gifted-spinner'

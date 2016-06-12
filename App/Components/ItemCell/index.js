@@ -1,12 +1,15 @@
-import React, {
+import React, { 
+    Component,
+    PropTypes     
+} from 'react'
+
+import {
     View,
     Text,
     Image,
     TouchableHighlight,
-    PropTypes,
     StyleSheet,
-    PixelRatio,
-    Component
+    PixelRatio
 } from 'react-native'
 
 export default class ItemCell extends Component {

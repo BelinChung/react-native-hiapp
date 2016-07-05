@@ -19,8 +19,8 @@
     "react": "15.2.0",
     "react-native": "0.28.0",
     "react-native-extra-dimensions-android": "git+https://github.com/BelinChung/react-native-extra-dimensions-android.git#d745f46",
-    "react-native-gifted-listview": "^0.0.15",
-    "react-native-gifted-messenger": "^0.1.5",
+    "react-native-gifted-listview": "git+https://github.com/BelinChung/react-native-gifted-listview.git#a64c4a5",
+    "react-native-gifted-messenger": "^0.1.4",
     "react-native-navbar": "^1.5.0",
     "react-native-parsed-text": "^0.0.15",
     "react-native-tab-navigator": "^0.3.2"

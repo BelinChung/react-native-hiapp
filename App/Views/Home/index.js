@@ -7,6 +7,7 @@ import {
     View,
     Image,
     TouchableHighlight,
+    Platform,
     Text
 } from 'react-native'
 
@@ -26,6 +27,7 @@ export default class HomeView extends Component {
     }
     
     render() {
+        let color = Platform.OS === 'android' ? styleUtils.androidSpinnerColor : 'gray'
         return (
             <GiftedListView
                 enableEmptySections={true}
@@ -36,6 +38,7 @@ export default class HomeView extends Component {
                 pagination={true} 
                 refreshable={true} 
                 withSections={false}
+                spinnerColor={color}
             />
         )
     }

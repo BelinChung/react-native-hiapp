@@ -4,6 +4,7 @@ import React, {
 
 import {
     StyleSheet,
+    Platform,
     View,
     Text
 } from 'react-native'
@@ -22,6 +23,7 @@ export default class ContactsView extends Component {
     }
 
     render() {
+        let color = Platform.OS === 'android' ? styleUtils.androidSpinnerColor : 'gray'
         return (
             <GiftedListView
                 enableEmptySections={true}
@@ -34,6 +36,7 @@ export default class ContactsView extends Component {
                 withSections={true}
                 paginationAllLoadedView={this._renderPaginationAllLoadedView}
                 sectionHeaderView={this._renderSectionHeaderView}
+                spinnerColor={color}
                 />
         )
     }

@@ -1,7 +1,10 @@
-import React, {
-  Component,
-  StyleSheet,
-  Text
+import React, { 
+    Component  
+} from 'react'
+
+import {
+    StyleSheet,
+    Text
 } from 'react-native'
 
 import TabNavigator from 'react-native-tab-navigator'

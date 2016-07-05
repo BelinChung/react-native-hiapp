@@ -1,10 +1,13 @@
-import React, {
-  Component,
-  StyleSheet,
-  View,
-  Image,
-  TouchableHighlight,
-  Text
+import React, { 
+    Component     
+} from 'react'
+
+import {
+    StyleSheet,
+    View,
+    Image,
+    TouchableHighlight,
+    Text
 } from 'react-native'
 
 import moment from 'moment'

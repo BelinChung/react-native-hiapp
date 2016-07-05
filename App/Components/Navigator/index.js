@@ -1,6 +1,9 @@
-import React, {
+import React, { 
+    Component    
+} from 'react'
+
+import {
     Navigator,
-    Component,
     Platform,
     View
 } from 'react-native'

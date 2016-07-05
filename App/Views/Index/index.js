@@ -1,7 +1,10 @@
-import React, {
-  Component,
-  StyleSheet,
-  View
+import React, { 
+    Component     
+} from 'react'
+
+import {
+    StyleSheet,
+    View
 } from 'react-native'
 
 import TabBarComp from '../../Components/TabBar'

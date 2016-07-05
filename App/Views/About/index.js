@@ -1,9 +1,12 @@
-import React, {
-  Component,
-  StyleSheet,
-  View,
-  Text,
-  Image
+import React, { 
+    Component     
+} from 'react'
+
+import {
+    StyleSheet,
+    View,
+    Text,
+    Image
 } from 'react-native'
 
 import styleUtils from '../../Styles'

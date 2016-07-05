@@ -1,9 +1,12 @@
-import React, {
+import React, { 
+    Component     
+} from 'react'
+
+import {
     Linking,
     Platform,
     Dimensions,
-    Navigator,
-    Component
+    Navigator
 } from 'react-native'
 
 import GiftedMessenger from 'react-native-gifted-messenger'

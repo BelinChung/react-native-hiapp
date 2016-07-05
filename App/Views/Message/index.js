@@ -3,6 +3,7 @@ import React, {
 } from 'react'
 
 import {
+    View,
     Linking,
     Platform,
     Dimensions,
@@ -12,6 +13,9 @@ import {
 import GiftedMessenger from 'react-native-gifted-messenger'
 import ExtraDimensions from 'react-native-extra-dimensions-android'
 import {ajax} from '../../Network' 
+
+import styleUtils from '../../Styles'
+import NavbarComp from '../../Components/NavBar'
 
 let STATUS_BAR_HEIGHT = Navigator.NavigationBar.Styles.General.StatusBarHeight
 if (Platform.OS === 'android') {
@@ -173,29 +177,35 @@ export default class MessageView extends Component {
 
     render() {
         return (
-            <GiftedMessenger
-                ref={ c => { this._GiftedMessenger = c } }
+            <View style={[styles.container, styleUtils.containerShadow]}>
+                <NavbarComp route={this.props.route} navigator={this.props.navigator}/> 
+                <GiftedMessenger
+                    ref={ c => { this._GiftedMessenger = c } }
 
-                styles={styles.bubbleRight}
+                    styles={styles.bubbleRight}
 
-                autoFocus={false}
-                messages={this.state.messages}
-                handleSend={this.handleSend.bind(this)}
-                onErrorButtonPress={this.onErrorButtonPress.bind(this)}
-                maxHeight={Dimensions.get('window').height - Navigator.NavigationBar.Styles.General.NavBarHeight - STATUS_BAR_HEIGHT}
+                    autoFocus={false}
+                    messages={this.state.messages}
+                    handleSend={this.handleSend.bind(this)}
+                    onErrorButtonPress={this.onErrorButtonPress.bind(this)}
+                    maxHeight={Dimensions.get('window').height - Navigator.NavigationBar.Styles.General.NavBarHeight - STATUS_BAR_HEIGHT}
 
-                loadEarlierMessagesButton={!this.state.allLoaded}
-                onLoadEarlierMessages={this.onLoadEarlierMessages.bind(this)}
+                    loadEarlierMessagesButton={!this.state.allLoaded}
+                    onLoadEarlierMessages={this.onLoadEarlierMessages.bind(this)}
 
-                displayNames={true}
-                parseText={true}
-                isLoadingEarlierMessages={this.state.isLoadingEarlierMessages}
+                    displayNames={true}
+                    parseText={true}
+                    isLoadingEarlierMessages={this.state.isLoadingEarlierMessages}
                 />
+            </View>
         )
     }
 }
 
 const styles = {
+    container: {
+        flex: 1
+    },
     bubbleRight: {
         marginLeft: 70,
         backgroundColor: '#007aff',

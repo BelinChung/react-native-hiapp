@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 
 import styleUtils from '../../Styles'
+import NavbarComp from '../../Components/NavBar'
 import Editor from '../../Components/Editor'
 
 export default class TweetView extends Component{
@@ -26,6 +27,7 @@ export default class TweetView extends Component{
     render() {
         return (
             <View style={styles.container}>  
+                <NavbarComp route={this.props.route} navigator={this.props.navigator}/> 
                 <Editor
                     onChangeText={this.onChangeText.bind(this)} 
                     placeholder={'What\'s happening'}

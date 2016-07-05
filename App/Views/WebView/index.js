@@ -4,8 +4,13 @@ import React, {
 } from 'react'
 
 import {
-    WebView
+    WebView,
+    StyleSheet,
+    View
 } from 'react-native'
+
+import styleUtils from '../../Styles'
+import NavbarComp from '../../Components/NavBar'
 
 export default class WebViewView extends Component{
     constructor(props) {
@@ -15,15 +20,18 @@ export default class WebViewView extends Component{
 
     render() {
         return (
-            <WebView
-                automaticallyAdjustContentInsets={false}
-                source={{uri: this.props.url}}
-                javaScriptEnabled={true}
-                domStorageEnabled={true}
-                decelerationRate='normal'
-                startInLoadingState={true}
-                scalesPageToFit={true}
-            />    
+            <View style={styles.container}>
+                <NavbarComp route={this.props.route} navigator={this.props.navigator}/> 
+                <WebView
+                    automaticallyAdjustContentInsets={false}
+                    source={{uri: this.props.url}}
+                    javaScriptEnabled={true}
+                    domStorageEnabled={true}
+                    decelerationRate='normal'
+                    startInLoadingState={true}
+                    scalesPageToFit={true}
+                />    
+            </View>
         )
     }
 }
@@ -31,3 +39,10 @@ export default class WebViewView extends Component{
 WebViewView.propTypes = {
     url: PropTypes.string.isRequired
 }
+
+const styles = StyleSheet.create({
+    container: {
+        ...styleUtils.containerBg,
+        flex: 1
+    }
+})

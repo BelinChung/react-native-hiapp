@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 
 import styleUtils from '../../Styles'
+import NavbarComp from '../../Components/NavBar'
 
 export default class AboutView extends Component{
     constructor(props) {
@@ -19,21 +20,24 @@ export default class AboutView extends Component{
 
     render() {
         return (
-            <View style={styles.container}>  
-                <View style={styles.logoView}>
-                    <Image style={styles.logo} source={require('../../assets/logo.png')} />
-                </View>  
-                <View style={styles.appNameView}>
-                    <Text style={styles.appNameText}>HiApp</Text>
-                </View>
-                <View style={styles.infoView}>
-                    <Text style={styles.infoText}>GitHub: BelinChung</Text>
-                    <Text style={styles.infoText}>Email: BelinChung@gmail.com</Text>
-                    <Text style={styles.infoText}>Twitter: @BelinChung</Text>
+            <View style={[styles.container, styleUtils.containerShadow]}>
+                <NavbarComp route={this.props.route} navigator={this.props.navigator}/>   
+                <View style={styles.textContainer}>
+                    <View style={styles.logoView}>
+                        <Image style={styles.logo} source={require('../../assets/logo.png')} />
+                    </View>  
+                    <View style={styles.appNameView}>
+                        <Text style={styles.appNameText}>HiApp</Text>
+                    </View>
+                    <View style={styles.infoView}>
+                        <Text style={styles.infoText}>GitHub: BelinChung</Text>
+                        <Text style={styles.infoText}>Email: BelinChung@gmail.com</Text>
+                        <Text style={styles.infoText}>Twitter: @BelinChung</Text>
+                    </View> 
+                    <View style={styles.copyrightView}>
+                        <Text style={styles.copyrightText}>Copyright © 2016 BelinChung.</Text>
+                    </View> 
                 </View> 
-                <View style={styles.copyrightView}>
-                    <Text style={styles.copyrightText}>Copyright © 2016 BelinChung.</Text>
-                </View>  
             </View> 
         )
     }
@@ -41,6 +45,9 @@ export default class AboutView extends Component{
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1
+    },
+    textContainer: {
         ...styleUtils.containerBg,
         flex: 1,
         alignItems: 'center',

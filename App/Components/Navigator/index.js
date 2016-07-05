@@ -37,59 +37,35 @@ export default class NavigatorComp extends Component {
         switch (route.id) {
         case 'index':
             return (
-                <View style={styles.container}>
-                    <NavbarComp route={route} navigator={navigator}/>
-                    <IndexView navigator={navigator}/>
-                </View>
+                <IndexView navigator={navigator} route={route}/>
             )
         case 'about':
             return (
-                <View style={styles.container}>
-                    <NavbarComp route={route} navigator={navigator}/>
-                    <AboutView navigator={navigator}/>
-                </View>
+                <AboutView navigator={navigator} route={route}/>
             )
         case 'message':
             return (
-                <View style={styles.container}>
-                    <NavbarComp route={route} navigator={navigator}/>
-                    <MessageView {...route.params} navigator={navigator}/>
-                </View>
+                <MessageView {...route.params} navigator={navigator} route={route}/>
             )
         case 'tweet':
             return (
-                <View style={styles.container}>
-                    <NavbarComp route={route} navigator={navigator}/>
-                    <TweetView navigator={navigator} route={route}/>
-                </View>
+                <TweetView navigator={navigator} route={route}/>
             )
         case 'feedback':
             return (
-                <View style={styles.container}>
-                    <NavbarComp route={route} navigator={navigator}/>
-                    <FeedbackView navigator={navigator} route={route}/>
-                </View>
+                <FeedbackView navigator={navigator} route={route}/>
             )
         case 'webview':
             return (
-                <View style={styles.container}>
-                    <NavbarComp route={route} navigator={navigator}/>
-                    <WebViewView {...route.params} navigator={navigator}/>
-                </View>
+                <WebViewView {...route.params} navigator={navigator} route={route}/>
             )
         case 'tweetDetails':
             return (
-                <View style={[styles.container, styleUtils.containerShadow]}>
-                    <NavbarComp route={route} navigator={navigator}/>
-                    <TweetDetailsView {...route.params} navigator={navigator} route={route}/>
-                </View>
+                <TweetDetailsView {...route.params} navigator={navigator} route={route}/>
             )
         case 'comment':
             return (
-                <View style={styles.container}>
-                    <NavbarComp route={route} navigator={navigator}/>
-                    <CommentView navigator={navigator} route={route}/>
-                </View>
+                <CommentView navigator={navigator} route={route}/>
             )
         default:
             break

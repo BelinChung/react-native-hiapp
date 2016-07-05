@@ -16,6 +16,7 @@ import {getAvatarUrl} from '../../Utils'
 import {ajax} from '../../Network'
 import styleUtils from '../../Styles'
 
+import NavbarComp from '../../Components/NavBar'
 import CommentComp from '../../Components/Comments'
 
 export default class AboutView extends Component{
@@ -50,32 +51,35 @@ export default class AboutView extends Component{
 
     render() {
         return (
-            <ScrollView contentContainerStyle={styles.container}>  
-                 <View style={cardStyle.tweetContainer}>
-                    <View style={cardStyle.topContainer}>
-                        <Image source={{uri: getAvatarUrl(this.props.tweet.avatar)}} style={cardStyle.avatar} />                
-                        <View>
-                            <View style={cardStyle.userContainer}>
-                                <Text style={cardStyle.name}>{this.props.tweet.nickname}</Text>
-                                <Text style={cardStyle.time}>{'#' + this.props.tweet.id + ' '} {moment(this.props.tweet.created_at * 1000).fromNow()}</Text>
+            <View style={[styles.container, styleUtils.containerShadow]}>
+                <NavbarComp route={this.props.route} navigator={this.props.navigator}/>    
+                <ScrollView contentContainerStyle={styles.container}>  
+                    <View style={cardStyle.tweetContainer}>
+                        <View style={cardStyle.topContainer}>
+                            <Image source={{uri: getAvatarUrl(this.props.tweet.avatar)}} style={cardStyle.avatar} />                
+                            <View>
+                                <View style={cardStyle.userContainer}>
+                                    <Text style={cardStyle.name}>{this.props.tweet.nickname}</Text>
+                                    <Text style={cardStyle.time}>{'#' + this.props.tweet.id + ' '} {moment(this.props.tweet.created_at * 1000).fromNow()}</Text>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={cardStyle.middleContainer}>
-                        <ParsedText
-                            parse={
-                            [{type: 'url', style: {color: '#007aff'}, onPress: this._handleUrlPress.bind(this)}]}
-                        >{this.props.tweet.text}</ParsedText>
-                        {this._renderMsgImage(this.props.tweet)}
-                    </View>
-                </View> 
-                <View style={styles.commentContainer}>
-                    <View style={styles.commentTitle}>
-                        <Text style={styles.commentTitleText}>Comments</Text>
-                    </View>
-                    <CommentComp loadding={this.state.loadding} comments={this.state.comments}/>
-                </View>  
-            </ScrollView> 
+                        <View style={cardStyle.middleContainer}>
+                            <ParsedText
+                                parse={
+                                [{type: 'url', style: {color: '#007aff'}, onPress: this._handleUrlPress.bind(this)}]}
+                            >{this.props.tweet.text}</ParsedText>
+                            {this._renderMsgImage(this.props.tweet)}
+                        </View>
+                    </View> 
+                    <View style={styles.commentContainer}>
+                        <View style={styles.commentTitle}>
+                            <Text style={styles.commentTitleText}>Comments</Text>
+                        </View>
+                        <CommentComp loadding={this.state.loadding} comments={this.state.comments}/>
+                    </View>  
+                </ScrollView> 
+            </View>
         )
     }
     

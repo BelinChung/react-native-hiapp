@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 
 import styleUtils from '../../Styles'
+import NavbarComp from '../../Components/NavBar'
 import Editor from '../../Components/Editor'
 
 export default class FeedbackView extends Component{
@@ -25,7 +26,8 @@ export default class FeedbackView extends Component{
 
     render() {
         return (
-            <View style={styles.container}>  
+            <View style={[styles.container, styleUtils.containerShadow]}>
+                <NavbarComp route={this.props.route} navigator={this.props.navigator}/>  
                 <Editor
                     enableTools={'emotion'}
                     onChangeText={this.onChangeText.bind(this)} 

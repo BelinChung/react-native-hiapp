@@ -78,7 +78,7 @@ export default class NavigatorComp extends Component {
         case 'webview':
             return Navigator.SceneConfigs.FloatFromBottom
         default:
-            return Navigator.SceneConfigs.PushFromRight
+            return Navigator.SceneConfigs.FloatFromRight
         }
     }
 } 

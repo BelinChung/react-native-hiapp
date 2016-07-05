@@ -13,6 +13,7 @@ let itemCell = {
 }
 
 export default {
+    androidSpinnerColor: '#009688',    
     containerBg: {
         backgroundColor: '#efeff4'
     },

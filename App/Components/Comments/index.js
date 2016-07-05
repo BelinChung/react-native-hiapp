@@ -6,11 +6,13 @@ import {
     View,
     Text,
     Image,
+    Platform,
     ListView,
-    StyleSheet
+    StyleSheet,
+    ActivityIndicator
 } from 'react-native'
 
-import GiftedSpinner from 'react-native-gifted-spinner'
+import styleUtils from '../../Styles'
 import iconfontConf from '../../Utils/iconfontConf'
 import {getAvatarUrl} from '../../Utils'
 
@@ -66,9 +68,14 @@ export default class CommentsComp extends Component {
     }
     
     _renderSpinner() {
+        let color = Platform.OS === 'android' ? styleUtils.androidSpinnerColor : 'gray'
         return (
             <View style={[styles.container, styles.spinnerContainer]}>
-                <GiftedSpinner/>        
+                <ActivityIndicator
+                    animating={true}
+                    size="small"
+                    color={color}
+                />        
             </View>
         )
     }    

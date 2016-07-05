@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 
 import NavbarComp from '../NavBar'
+import styleUtils from '../../Styles'
 
 import IndexView from '../../Views/Index'
 import AboutView from '../../Views/About'
@@ -78,7 +79,7 @@ export default class NavigatorComp extends Component {
             )
         case 'tweetDetails':
             return (
-                <View style={styles.container}>
+                <View style={[styles.container, styleUtils.containerShadow]}>
                     <NavbarComp route={route} navigator={navigator}/>
                     <TweetDetailsView {...route.params} navigator={navigator} route={route}/>
                 </View>

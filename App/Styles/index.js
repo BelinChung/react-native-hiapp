@@ -16,6 +16,10 @@ export default {
     containerBg: {
         backgroundColor: '#efeff4'
     },
+    containerShadow: {
+        borderColor: '#e1e1e1',
+        borderLeftWidth: 1
+    },
     itemCell: itemCell,
     card: {
         tweetContainer: {

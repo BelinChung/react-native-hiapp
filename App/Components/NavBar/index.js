@@ -5,7 +5,8 @@ import React, {
 import {
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native'
 
 import NavigationBar from 'react-native-navbar'
@@ -13,12 +14,15 @@ import iconfontConf from '../../Utils/iconfontConf'
 
 const styles = {
     navbar: {
-        alignItems: 'center'
+        alignItems: 'center',
+        borderColor: '#e1e1e1',
+        borderBottomWidth: 1    
     },
     title: {
         flex: 1, 
         alignItems: 'center', 
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 5
     },
     titleText: {
         fontSize: 18    
@@ -120,14 +124,16 @@ export default class NavbarComp extends Component {
     }
 
     render() {
+        let style = {
+            paddingTop: Platform.OS === 'android' ? 0 : 20,
+            height: Platform.OS === 'android' ? 56 : 64
+        }
         return (
             <NavigationBar
-                style={styles.navbar}
+                style={[styles.navbar, style]}
                 tintColor={'#f7f7f8'}
                 statusBar={{
-                    style: 'default',
-                    showAnimation: 'fade',
-                    tintColor: '#f7f7f8'
+                    hidden: true
                 }}
                 leftButton={this._leftButton()}
                 rightButton={this._rightButton()}

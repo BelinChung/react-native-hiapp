@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { 
+    Component    
+} from 'react'
 
 import {
     View,
     Text,
-    Component,
     TouchableOpacity
 } from 'react-native'
 

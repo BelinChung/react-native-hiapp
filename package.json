@@ -23,6 +23,7 @@
     "react-native-gifted-messenger": "git+https://github.com/BelinChung/react-native-gifted-messenger.git#e6b7d32",
     "react-native-navbar": "^1.5.0",
     "react-native-parsed-text": "^0.0.15",
+    "react-native-photo-browser": "^0.2.1",
     "react-native-tab-navigator": "^0.3.2"
   },
   "devDependencies": {

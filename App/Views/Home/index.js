@@ -119,7 +119,9 @@ export default class HomeView extends Component {
     _renderMsgImage(info) {
         if(info.original_pic) {
             return (
-                <Image source={{uri: info.original_pic}} style={[styles.msgImage, { resizeMode: Image.resizeMode.cover }]} />
+                <TouchableHighlight onPress={this._openPhotoBrowser.bind(this, info)}>
+                    <Image source={{uri: info.original_pic}} style={[styles.msgImage, { resizeMode: Image.resizeMode.cover }]} />
+                </TouchableHighlight>
             )
         }
     }
@@ -140,6 +142,18 @@ export default class HomeView extends Component {
             id: 'tweetDetails',
             params: {
                 tweet: tweet
+            }
+        })
+    }
+
+    _openPhotoBrowser(info) {
+        this.props.navigator.push({
+            id: 'photoBrowser',
+            params: {
+                mediaList: [{
+                    photo: info.original_pic,
+                    caption: info.text
+                }]
             }
         })
     }

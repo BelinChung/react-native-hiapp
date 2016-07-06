@@ -19,6 +19,7 @@ import FeedbackView from '../../Views/Feedback'
 import WebViewView from '../../Views/WebView'
 import TweetDetailsView from '../../Views/TweetDetails'
 import CommentView from '../../Views/Comment'
+import PhotoBrowserView from '../../Views/PhotoBrowser'
 
 export default class NavigatorComp extends Component {
     render() {
@@ -67,6 +68,10 @@ export default class NavigatorComp extends Component {
             return (
                 <CommentView navigator={navigator} route={route}/>
             )
+        case 'photoBrowser':
+            return (
+                <PhotoBrowserView {...route.params} navigator={navigator}/>
+            )
         default:
             break
         }
@@ -76,6 +81,7 @@ export default class NavigatorComp extends Component {
         switch (route.id) {
         case 'tweet':
         case 'webview':
+        case 'photoBrowser':
             return Navigator.SceneConfigs.FloatFromBottom
         default:
             return Navigator.SceneConfigs.FloatFromRight

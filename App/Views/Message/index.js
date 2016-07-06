@@ -176,6 +176,7 @@ export default class MessageView extends Component {
     }
 
     render() {
+        let color = Platform.OS === 'android' ? styleUtils.androidSpinnerColor : 'gray'
         return (
             <View style={[styles.container, styleUtils.containerShadow]}>
                 <NavbarComp route={this.props.route} navigator={this.props.navigator}/> 
@@ -196,6 +197,7 @@ export default class MessageView extends Component {
                     displayNames={true}
                     parseText={true}
                     isLoadingEarlierMessages={this.state.isLoadingEarlierMessages}
+                    spinnerColor={color}
                 />
             </View>
         )

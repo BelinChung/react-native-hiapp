@@ -37,3 +37,9 @@ android/keystores/
 #
 node_modules/
 npm-debug.log
+
+# android release
+#
+android/app/src/main/assets
+!android/app/src/main/assets/Fonts
+android/app/src/main/res

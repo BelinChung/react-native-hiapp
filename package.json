@@ -16,8 +16,8 @@
     "apsl-react-native-button": "^2.5.0",
     "lodash": "^4.13.1",
     "moment": "^2.13.0",
-    "react": "15.2.0",
-    "react-native": "0.29.0",
+    "react": "15.3.1",
+    "react-native": "0.32.1",
     "react-native-extra-dimensions-android": "git+https://github.com/BelinChung/react-native-extra-dimensions-android.git#6f1a73d",
     "react-native-gifted-listview": "git+https://github.com/BelinChung/react-native-gifted-listview.git#a64c4a5",
     "react-native-gifted-messenger": "git+https://github.com/BelinChung/react-native-gifted-messenger.git#e6b7d32",
@@ -30,7 +30,6 @@
     "eslint": "^2.4.0",
     "eslint-config-coremail": "~0.0.4",
     "eslint-plugin-react": "^5.1.1",
-    "eslint-plugin-react-native": "^1.1.0-beta",
-    "rnpm-plugin-upgrade": "^0.26.0"
+    "eslint-plugin-react-native": "^1.1.0-beta"
   }
 }

@@ -22,8 +22,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		796068851D2DE78500FF4B46 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7960687A1D2DE77700FF4B46 /* libART.a */; };
-		796068871D2DE79400FF4B46 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 796068861D2DE79400FF4B46 /* Fonts */; };
+		79824B101D8292EC00DBAC67 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 79824B0F1D8292EC00DBAC67 /* Fonts */; };
+		79824B2C1D8294B900DBAC67 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79824B2B1D8294B000DBAC67 /* libART.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -98,9 +98,9 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
-		796068791D2DE77700FF4B46 /* PBXContainerItemProxy */ = {
+		79824B2A1D8294B000DBAC67 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 796068751D2DE77700FF4B46 /* ART.xcodeproj */;
+			containerPortal = 79824B261D8294B000DBAC67 /* ART.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
 			remoteInfo = ART;
@@ -135,8 +135,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RN_HiApp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		796068751D2DE77700FF4B46 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
-		796068861D2DE79400FF4B46 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		79824B0F1D8292EC00DBAC67 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		79824B261D8294B000DBAC67 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,7 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				796068851D2DE78500FF4B46 /* libART.a in Frameworks */,
+				79824B2C1D8294B900DBAC67 /* libART.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -273,10 +273,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		796068761D2DE77700FF4B46 /* Products */ = {
+		79824B271D8294B000DBAC67 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7960687A1D2DE77700FF4B46 /* libART.a */,
+				79824B2B1D8294B000DBAC67 /* libART.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				796068751D2DE77700FF4B46 /* ART.xcodeproj */,
+				79824B261D8294B000DBAC67 /* ART.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -310,7 +310,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				796068861D2DE79400FF4B46 /* Fonts */,
+				79824B0F1D8292EC00DBAC67 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* RN_HiApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* RN_HiAppTests */,
@@ -396,8 +396,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 796068761D2DE77700FF4B46 /* Products */;
-					ProjectRef = 796068751D2DE77700FF4B46 /* ART.xcodeproj */;
+					ProductGroup = 79824B271D8294B000DBAC67 /* Products */;
+					ProjectRef = 79824B261D8294B000DBAC67 /* ART.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -512,11 +512,11 @@
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7960687A1D2DE77700FF4B46 /* libART.a */ = {
+		79824B2B1D8294B000DBAC67 /* libART.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libART.a;
-			remoteRef = 796068791D2DE77700FF4B46 /* PBXContainerItemProxy */;
+			remoteRef = 79824B2A1D8294B000DBAC67 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
@@ -540,7 +540,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				796068871D2DE79400FF4B46 /* Fonts in Resources */,
+				79824B101D8292EC00DBAC67 /* Fonts in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);

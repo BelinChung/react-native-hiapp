@@ -24,6 +24,7 @@ project.xcworkspace
 
 # Android/IJ
 #
+*.iml
 .idea
 .gradle
 local.properties
@@ -43,3 +44,8 @@ npm-debug.log
 android/app/src/main/assets
 !android/app/src/main/assets/Fonts
 android/app/src/main/res
+
+# BUCK
+buck-out/
+\.buckd/
+android/app/libs

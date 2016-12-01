@@ -123,16 +123,13 @@ export default class NavbarComp extends Component {
 
     render() {
         let style = {
-            paddingTop: Platform.OS === 'android' ? 0 : 20,
-            height: Platform.OS === 'android' ? 56 : 64
+            paddingTop: 0,
+            height: Platform.OS === 'android' ? 56 : 44
         }
         return (
             <NavigationBar
                 style={[styles.navbar, style]}
                 tintColor={'#f7f7f8'}
-                statusBar={{
-                    hidden: true
-                }}
                 leftButton={this._leftButton()}
                 rightButton={this._rightButton()}
                 title={this._title()}

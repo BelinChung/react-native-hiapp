@@ -1,230 +1,232 @@
-import React, { 
-    Component     
-} from 'react'
-
+import React from 'react'
 import {
-    View,
-    Linking,
     Platform,
-    Dimensions,
-    Navigator
+    StyleSheet,
+    Text,
+    View,
+    Alert
 } from 'react-native'
 
-import GiftedMessenger from 'react-native-gifted-messenger'
-import ExtraDimensions from 'react-native-extra-dimensions-android'
-import {ajax} from '../../Network' 
+import { GiftedChat, Actions, Bubble } from 'react-native-gifted-chat'
+import CustomActions from './customActions'
+import CustomView from './customView'
 
 import styleUtils from '../../Styles'
 import NavbarComp from '../../Components/NavBar'
 
-let STATUS_BAR_HEIGHT = Navigator.NavigationBar.Styles.General.StatusBarHeight
-if (Platform.OS === 'android') {
-    STATUS_BAR_HEIGHT = ExtraDimensions.get('STATUS_BAR_HEIGHT')
-}
-
-let answerTimeout
-
-function _getUniqueId() {
-    return Math.round(Math.random() * 10000)          
-}
-
-function _format(msg) {
-    let messages = []
-    msg.forEach(item => {
-        let avatar, position 
-        if(item.from === 'received') {
-            position = 'left'
-            avatar = 'https://facebook.github.io/react/img/logo_og.png'
-        } else {
-            position = 'right'
-            avatar = 'https://raw.githubusercontent.com/BelinChung/HiApp/master/src/res/icons/ios/icon-76%402x.png'
-        }
-        let message = {
-            text: item.text,
-            image: {uri: avatar},
-            position: position,
-            date: item.date,
-            uniqueId: _getUniqueId(),
-        }
-        // TODO support image message type
-        
-        messages.push(message)
-    })  
-    return messages 
-}
-
-export default class MessageView extends Component {
-
+export default class MessageView extends React.Component {
     constructor(props) {
         super(props)
-
-        this._isMounted = false
-        
         this.state = {
             messages: [],
-            isLoadingEarlierMessages: false,
-            allLoaded: false,
+            loadEarlier: true,
+            typingText: null,
+            isLoadingEarlier: false,
         }
+
+        this._isMounted = false
+        this.onSend = this.onSend.bind(this)
+        this.onReceive = this.onReceive.bind(this)
+        this.renderCustomActions = this.renderCustomActions.bind(this)
+        this.renderBubble = this.renderBubble.bind(this)
+        this.renderFooter = this.renderFooter.bind(this)
+        this.onLoadEarlier = this.onLoadEarlier.bind(this)
+
+        this._isAlright = null
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this._isMounted = true
-        
-        this.setState({
-            isLoadingEarlierMessages: true,
+        this.setState(() => {
+            return {
+                messages: require('../../Mock/message'),
+            }
         })
-        setTimeout(_ => {
-            this.getInitialMessages(messages => {
-                this._messages = messages
-                this.setMessages(messages)
-                this.setState({
-                    isLoadingEarlierMessages: false
-                })
-            })
-        }, 600)
     }
 
     componentWillUnmount() {
         this._isMounted = false
     }
 
-    getInitialMessages(callback) {
-        ajax({
-            url: 'message.json'
-        }).then(res => {
-            if(!res.err_code) {
-                callback(_format(res.data))    
+    onLoadEarlier() {
+        this.setState(previousState => {
+            return {
+                isLoadingEarlier: true,
             }
         })
-    }
-
-    setMessageStatus(uniqueId, status) {
-        let messages = []
-        let found = false
-
-        for (let i = 0; i < this._messages.length; i++) {
-            if (this._messages[i].uniqueId === uniqueId) {
-                let clone = Object.assign({}, this._messages[i])
-                clone.status = status
-                messages.push(clone)
-                found = true
-            } else {
-                messages.push(this._messages[i])
-            }
-        }
-
-        if (found === true) {
-            this.setMessages(messages)
-        }
-    }
-
-    setMessages(messages) {
-        this._messages = messages
-
-        this.setState({
-            messages: messages,
-        })
-    }
-
-    handleSend(message = {}) {
-        message.uniqueId = Math.round(Math.random() * 10000)
-        this.setMessages(this._messages.concat(message))
 
         setTimeout(() => {
-            this.autoAnswer()
-            this.setMessageStatus(message.uniqueId, 'Seen')
-        }, 1000)
-    }
-    
-    autoAnswer() {
-        if (answerTimeout) clearTimeout(answerTimeout)
-        answerTimeout = setTimeout(_ => {
-            let message = {
-                position: 'left',
-                text: answers[Math.floor(Math.random() * answers.length)],
-                image: {uri: 'https://facebook.github.io/react/img/logo_og.png'},
-                uniqueId: _getUniqueId(),
-            }
-            this.setMessages(this._messages.concat(message))
-        }, 1000)
-    }
-
-    onLoadEarlierMessages() {
-        this.setState({
-            isLoadingEarlierMessages: true,
-        })
-        ajax({
-            url: 'history_message.json'
-        }).then(res => {
-            if(!res['err_code']) {
-                let earlierMsg = _format(res.data)    
-                this.setMessages(earlierMsg.concat(this._messages))
-                this.setState({
-                    isLoadingEarlierMessages: false,
-                    allLoaded: true,
+            if (this._isMounted === true) {
+                this.setState(previousState => {
+                    return {
+                        messages: GiftedChat.prepend(previousState.messages, require('../../Mock/earlierMessage')),
+                        loadEarlier: false,
+                        isLoadingEarlier: false,
+                    }
                 })
             }
-        }) 
+        }, 1000) // simulating network
     }
 
-    handleReceive(message = {}) {
-        this.setMessages(this._messages.concat(message))
+    onSend(messages = []) {
+        this.setState(previousState => {
+            return {
+                messages: GiftedChat.append(previousState.messages, messages),
+            }
+        })
+
+        // for demo purpose
+        this.answerDemo(messages)
     }
 
-    onErrorButtonPress(message = {}) {
-        this.setMessageStatus(message.uniqueId, '')
+    answerDemo(messages) {
+        if (messages.length > 0) {
+            if ((messages[0].image || messages[0].location) || !this._isAlright) {
+                this.setState(previousState => {
+                    return {
+                        typingText: 'React Native is typing'
+                    }
+                })
+            }
+        }
+
+        setTimeout(() => {
+            if (this._isMounted === true) {
+                if (messages.length > 0) {
+                    if (messages[0].image) {
+                        this.onReceive('Nice picture!')
+                    } else if (messages[0].location) {
+                        this.onReceive('My favorite place')
+                    } else {
+                        if (!this._isAlright) {
+                            this._isAlright = true
+                            this.onReceive('Alright')
+                        }
+                    }
+                }
+            }
+
+            this.setState(previousState => {
+                return {
+                    typingText: null,
+                }
+            })
+        }, 1000)
+    }
+
+    onReceive(text) {
+        this.setState(previousState => {
+            return {
+                messages: GiftedChat.append(previousState.messages, {
+                    _id: Math.round(Math.random() * 1000000),
+                    text: text,
+                    createdAt: new Date(),
+                    user: {
+                        _id: 2,
+                        name: 'React Native',
+                        avatar: 'https://facebook.github.io/react/img/logo_og.png',
+                    },
+                }),
+            }
+        })
+    }
+
+    renderCustomActions(props) {
+        if (Platform.OS === 'ios') {
+            return (
+                <CustomActions
+                    {...props}
+                    />
+            )
+        }
+        const options = {
+            'Action 1': props => {
+                Alert('option 1')
+            },
+            'Action 2': props => {
+                Alert('option 2')
+            },
+            'Cancel': () => { },
+        }
+        return (
+            <Actions
+                {...props}
+                options={options}
+                />
+        )
+    }
+
+    renderBubble(props) {
+        return (
+            <Bubble
+                {...props}
+                wrapperStyle={{
+                    left: {
+                        backgroundColor: '#f0f0f0',
+                    }
+                }}
+                />
+        )
+    }
+
+    renderCustomView(props) {
+        return (
+            <CustomView
+                {...props}
+                />
+        )
+    }
+
+    renderFooter(props) {
+        if (this.state.typingText) {
+            return (
+                <View style={styles.footerContainer}>
+                    <Text style={styles.footerText}>
+                        {this.state.typingText}
+                    </Text>
+                </View>
+            )
+        }
+        return null
     }
 
     render() {
-        let color = Platform.OS === 'android' ? styleUtils.androidSpinnerColor : 'gray'
         return (
             <View style={[styles.container, styleUtils.containerShadow]}>
                 <NavbarComp route={this.props.route} navigator={this.props.navigator}/> 
-                <GiftedMessenger
-                    ref={ c => { this._GiftedMessenger = c } }
-
-                    styles={styles.bubbleRight}
-
-                    autoFocus={false}
+                <GiftedChat
                     messages={this.state.messages}
-                    handleSend={this.handleSend.bind(this)}
-                    onErrorButtonPress={this.onErrorButtonPress.bind(this)}
-                    maxHeight={Dimensions.get('window').height - Navigator.NavigationBar.Styles.General.NavBarHeight - STATUS_BAR_HEIGHT}
+                    onSend={this.onSend}
+                    loadEarlier={this.state.loadEarlier}
+                    onLoadEarlier={this.onLoadEarlier}
+                    isLoadingEarlier={this.state.isLoadingEarlier}
 
-                    loadEarlierMessagesButton={!this.state.allLoaded}
-                    onLoadEarlierMessages={this.onLoadEarlierMessages.bind(this)}
+                    user={{
+                        _id: 1, // sent messages should have same user._id
+                    }}
 
-                    displayNames={true}
-                    parseText={true}
-                    isLoadingEarlierMessages={this.state.isLoadingEarlierMessages}
-                    spinnerColor={color}
-                />
+                    renderActions={this.renderCustomActions}
+                    renderBubble={this.renderBubble}
+                    renderCustomView={this.renderCustomView}
+                    renderFooter={this.renderFooter}
+                    />
             </View>
         )
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         flexGrow: 1
     },
-    bubbleRight: {
-        marginLeft: 70,
-        backgroundColor: '#007aff',
-    }
-}
-
-const answers = [
-    'Yes!',
-    'No',
-    'Hm...',
-    'I am not sure',
-    'And what about you?',
-    'May be ;)',
-    'Lorem ipsum dolor sit amet, consectetur',
-    'What?',
-    'Are you sure?',
-    'Of course',
-    'Need to think about it',
-    'Amazing!!!'
-]
+    footerContainer: {
+        marginTop: 5,
+        marginLeft: 10,
+        marginRight: 10,
+        marginBottom: 10,
+    },
+    footerText: {
+        fontSize: 14,
+        color: '#aaa',
+    },
+})

@@ -33,6 +33,7 @@ android/keystores/
 # VS Code
 #
 .vscode
+typings
 
 # node.js
 #

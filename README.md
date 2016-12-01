@@ -9,7 +9,7 @@ Mirrors: [秒拍](http://t.cn/R5qrq7H)
 
 ## Requirements
 
-[React Native](http://facebook.github.io/react-native/docs/getting-started.html) `0.34.0` (follow iOS and Android guides)
+[React Native](http://facebook.github.io/react-native/docs/getting-started.html) `0.38.0` (follow iOS and Android guides)
 
 ## Setup
 

@@ -13,18 +13,18 @@
     "lint": "eslint . --ext js"
   },
   "dependencies": {
-    "apsl-react-native-button": "^2.5.0",
+    "apsl-react-native-button": "^3.0.2",
     "lodash": "^4.13.1",
     "moment": "^2.13.0",
     "react": "15.4.1",
     "react-native": "0.38.0",
-    "react-native-extra-dimensions-android": "git+https://github.com/BelinChung/react-native-extra-dimensions-android.git#6f1a73d",
+    "react-native-extra-dimensions-android": "^0.20.1",
+    "react-native-gifted-chat": "0.0.10",
     "react-native-gifted-listview": "git+https://github.com/BelinChung/react-native-gifted-listview.git#a64c4a5",
-    "react-native-gifted-messenger": "git+https://github.com/BelinChung/react-native-gifted-messenger.git#e6b7d32",
-    "react-native-navbar": "^1.5.0",
-    "react-native-parsed-text": "^0.0.15",
-    "react-native-photo-browser": "^0.2.1",
-    "react-native-tab-navigator": "^0.3.2"
+    "react-native-navbar": "^1.5.4",
+    "react-native-parsed-text": "^0.0.16",
+    "react-native-photo-browser": "^0.2.2",
+    "react-native-tab-navigator": "^0.3.3"
   },
   "devDependencies": {
     "eslint": "^2.4.0",

@@ -19,7 +19,7 @@ const styles = {
         borderBottomWidth: 1    
     },
     title: {
-        flex: 1, 
+        flexGrow: 1, 
         alignItems: 'center', 
         justifyContent: 'center',
         marginBottom: 5
@@ -28,7 +28,7 @@ const styles = {
         fontSize: 18    
     },
     button: {
-        flex: 1, 
+        flexGrow: 1, 
         width: 35, 
         alignItems: 'center', 
         justifyContent: 'center'

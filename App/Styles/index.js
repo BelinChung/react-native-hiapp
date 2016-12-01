@@ -28,7 +28,7 @@ export default {
             backgroundColor: 'white'
         },
         topContainer: {
-            flex: 1,
+            flexGrow: 1,
             flexDirection: 'row',
             padding: 10,
             borderColor: '#e1e1e1',
@@ -57,7 +57,7 @@ export default {
             borderBottomWidth: 1
         },
         msgImage: {
-            flex: 1,
+            flexGrow: 1,
             marginTop: 10,
             height: 200,
             backgroundColor: '#e1e1e1'   
@@ -68,7 +68,7 @@ export default {
             backgroundColor: '#fafafa'
         },
         bottomTool: {
-            flex: 1,
+            flexGrow: 1,
             justifyContent: 'center',
             alignItems: 'center'
         },

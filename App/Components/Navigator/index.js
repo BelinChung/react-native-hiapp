@@ -91,6 +91,6 @@ export default class NavigatorComp extends Component {
 
 const styles = {
     container: {
-        flex: 1
+        flexGrow: 1
     }
 }

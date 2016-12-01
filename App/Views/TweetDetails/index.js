@@ -114,7 +114,7 @@ const cardStyle = styleUtils.card
 const styles = StyleSheet.create({
     container: {
         ...styleUtils.containerBg,
-        flex: 1
+        flexGrow: 1
     },
     commentContainer: {
         borderWidth: 1,

@@ -45,11 +45,11 @@ export default class AboutView extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flexGrow: 1
     },
     textContainer: {
         ...styleUtils.containerBg,
-        flex: 1,
+        flexGrow: 1,
         alignItems: 'center',
         paddingTop: 35
     },

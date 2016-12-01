@@ -96,11 +96,11 @@ ItemCell.propTypes = {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
         flexDirection: 'row',
     },
     viewContainer: {
-        flex: 1,
+        flexGrow: 1,
         flexDirection: 'row',
         backgroundColor: 'white',
         alignItems: 'center',
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     flex: {
-        flex: 1        
+        flexGrow: 1        
     },
     bottomBorder: { // eslint-disable-line
         borderBottomWidth: 1 / PixelRatio.get(),
@@ -122,14 +122,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     textContainer: {
-        flex: 1,
+        flexGrow: 1,
         flexDirection: 'row',
         marginTop: 10,
         marginBottom: 10,
         alignItems: 'center',
     },
     text: {
-        flex: 1,
+        flexGrow: 1,
         fontSize: 16,
         alignSelf: 'center',
     },

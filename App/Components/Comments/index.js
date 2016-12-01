@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     commentContainer: {
-        flex: 1,
+        flexGrow: 1,
         flexDirection: 'row',
         marginLeft: 10,
         marginRight: 10,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1
     },
     commentRightContainer: {
-        flex: 1
+        flexGrow: 1
     },
     commentAvatar: {
         backgroundColor: 'gray',

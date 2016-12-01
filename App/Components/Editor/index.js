@@ -71,7 +71,7 @@ EditorComp.defaultProps = {
 
 const styles = StyleSheet.create({
     textInput: {
-        flex: 1,
+        flexGrow: 1,
         height: 160,
         backgroundColor: '#fff',
         padding: 10,

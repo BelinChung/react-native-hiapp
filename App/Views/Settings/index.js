@@ -120,7 +120,7 @@ const Styles = StyleSheet.create({
         fontSize: 15
     },
     rightContainer: {
-        flex: 1,
+        flexGrow: 1,
         padding: 10
     },
     ponit: {

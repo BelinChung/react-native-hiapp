@@ -206,7 +206,7 @@ export default class MessageView extends Component {
 
 const styles = {
     container: {
-        flex: 1
+        flexGrow: 1
     },
     bubbleRight: {
         marginLeft: 70,

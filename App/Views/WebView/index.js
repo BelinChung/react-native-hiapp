@@ -43,6 +43,6 @@ WebViewView.propTypes = {
 const styles = StyleSheet.create({
     container: {
         ...styleUtils.containerBg,
-        flex: 1
+        flexGrow: 1
     }
 })

@@ -67,8 +67,7 @@ export default class TabBarComp extends Component {
 
 const styles = StyleSheet.create({
     sceneStyle: {
-        ...styleUtils.containerBg,
-        flexGrow: 1  
+        ...styleUtils.containerBg
     },
     titleStyle: {
         color: '#929292',

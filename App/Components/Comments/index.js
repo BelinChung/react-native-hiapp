@@ -73,7 +73,7 @@ export default class CommentsComp extends Component {
             <View style={[styles.container, styles.spinnerContainer]}>
                 <ActivityIndicator
                     animating={true}
-                    size="small"
+                    size='small'
                     color={color}
                 />        
             </View>
@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     commentContainer: {
-        flexGrow: 1,
         flexDirection: 'row',
         marginLeft: 10,
         marginRight: 10,
@@ -119,9 +118,6 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         borderColor: '#e1e1e1',
         borderBottomWidth: 1
-    },
-    commentRightContainer: {
-        flexGrow: 1
     },
     commentAvatar: {
         backgroundColor: 'gray',

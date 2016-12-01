@@ -28,7 +28,6 @@ export default {
             backgroundColor: 'white'
         },
         topContainer: {
-            flexGrow: 1,
             flexDirection: 'row',
             padding: 10,
             borderColor: '#e1e1e1',
@@ -57,7 +56,6 @@ export default {
             borderBottomWidth: 1
         },
         msgImage: {
-            flexGrow: 1,
             marginTop: 10,
             height: 200,
             backgroundColor: '#e1e1e1'   

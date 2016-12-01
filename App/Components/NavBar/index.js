@@ -18,8 +18,7 @@ const styles = {
         borderColor: '#e1e1e1',
         borderBottomWidth: 1    
     },
-    title: {
-        flexGrow: 1, 
+    title: { 
         alignItems: 'center', 
         justifyContent: 'center',
         marginBottom: 5
@@ -28,7 +27,6 @@ const styles = {
         fontSize: 18    
     },
     button: {
-        flexGrow: 1, 
         width: 35, 
         alignItems: 'center', 
         justifyContent: 'center'

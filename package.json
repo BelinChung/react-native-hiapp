@@ -34,11 +34,11 @@
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-react-native": "^2.3.1",
     "babel-jest": "19.0.0",
-		"babel-preset-react-native": "1.9.1",
-		"jest": "19.0.2",
-		"react-test-renderer": "15.4.2"
+    "babel-preset-react-native": "1.9.1",
+    "jest": "19.0.2",
+    "react-test-renderer": "15.4.2"
   },
   "jest": {
-		"preset": "react-native"
-	}
+    "preset": "react-native"
+  }
 }

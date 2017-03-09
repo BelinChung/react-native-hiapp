@@ -1,4 +1,4 @@
-const API_PATH = 'https://raw.githubusercontent.com/BelinChung/HiApp/master/src/api/'
+const API_PATH = 'https://raw.githubusercontent.com/BelinChung/react-native-hiapp/master/mock_api/'
 
 function _param(obj = {}) {
     let _ = encodeURIComponent

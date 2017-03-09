@@ -9,7 +9,7 @@ Mirrors: [秒拍](http://t.cn/R5qrq7H)
 
 ## Requirements
 
-[React Native](http://facebook.github.io/react-native/docs/getting-started.html) `0.38.0` (follow iOS and Android guides)
+[React Native](http://facebook.github.io/react-native/docs/getting-started.html) `0.42.0` (follow iOS and Android guides)
 
 ## Setup
 
@@ -48,5 +48,5 @@ Mirrors: [秒拍](http://t.cn/R5qrq7H)
 
 ## License
 
-Copyright (c) 2016 Belin Chung. MIT Licensed, see [LICENSE](https://github.com/BelinChung/react-native-hiapp/blob/master/LICENSE) for details.
+Copyright (c) 2016 - 2017 Belin Chung. MIT Licensed, see [LICENSE](https://github.com/BelinChung/react-native-hiapp/blob/master/LICENSE) for details.
 

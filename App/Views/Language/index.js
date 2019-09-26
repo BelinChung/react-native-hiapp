@@ -3,6 +3,7 @@ import config from '@Config'
 import styles from '@Styles'
 import t, { getCurrentLanguage, setCurrentLanguage } from '@Localize'
 
+import HeaderButton from '@Components/HeaderButton'
 import ListTitle from '@Components/ListTitle'
 
 import {
@@ -12,18 +13,12 @@ import {
 } from 'react-native'
 
 import {
+  Header,
   ListItem,
   CheckBox
 } from 'react-native-elements'
 
 export default class LanguageScreen extends React.Component {
-  static navigationOptions = _ => {
-    return {
-      ...config.defaultNavigation,
-      title: t('settings.language'),
-    }
-  }
-
   constructor() {
     super()
     this.state = {
@@ -42,6 +37,13 @@ export default class LanguageScreen extends React.Component {
   render() {
     return (
       <View style={viewStyles.container}>
+        <Header
+          leftComponent={<HeaderButton text={ t('global.back') } icon={ 'ios7arrowleft' } onPressButton={ _ => { this.props.navigation.goBack() } }/>}
+          centerComponent={{ text: t('settings.language'), style: styles.modalHeader.center }}
+          containerStyle={{
+            backgroundColor: config.mainColor,
+          }}
+        />
         <ListTitle title={t('settings.language').toUpperCase()}/>
         <ListItem
           topDivider
@@ -84,6 +86,5 @@ export default class LanguageScreen extends React.Component {
 const viewStyles = StyleSheet.create({
   container: {
     ...styles.container,
-    paddingTop: 20
-  }
+  },
 })

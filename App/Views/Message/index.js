@@ -7,6 +7,8 @@
 import React from 'react'
 import config from '@Config'
 import t from '@Localize'
+import styles from '@Styles'
+import HeaderButton from '@Components/HeaderButton'
 
 import {
   GiftedChat,
@@ -23,15 +25,11 @@ import {
   SafeAreaView
 } from 'react-native'
 
-export default class MessageScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state
-    return {
-      ...config.defaultNavigation,
-      title: params.user.nickname
-    }
-  }
+import {
+  Header
+} from 'react-native-elements'
 
+export default class MessageScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -52,7 +50,7 @@ export default class MessageScreen extends React.Component {
     this._isAlright = null
   }
 
-  componentDidMount() { //eslint-disable-line
+  componentDidMount() {
     this._isMounted = true
     this.setState(() => {
       return {
@@ -181,8 +179,8 @@ export default class MessageScreen extends React.Component {
   renderFooter(props) {
     if (this.state.typingText) {
       return (
-        <View style={styles.footerContainer}>
-          <Text style={styles.footerText}>{this.state.typingText}</Text>
+        <View style={viewStyles.footerContainer}>
+          <Text style={viewStyles.footerText}>{this.state.typingText}</Text>
         </View>
       )
     }
@@ -190,8 +188,17 @@ export default class MessageScreen extends React.Component {
   }
 
   render() {
+    const { user } = this.props.navigation.state.params
+
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <View style={viewStyles.container}>
+        <Header
+          leftComponent={<HeaderButton text={ t('global.back') } icon={ 'ios7arrowleft' } onPressButton={ _ => { this.props.navigation.goBack() } }/>}
+          centerComponent={{ text: user.nickname, style: styles.modalHeader.center }}
+          containerStyle={{
+            backgroundColor: config.mainColor,
+          }}
+        />
         <GiftedChat
           messages={this.state.messages}
           onSend={this.onSend}
@@ -205,12 +212,15 @@ export default class MessageScreen extends React.Component {
           renderSystemMessage={this.renderSystemMessage}
           renderFooter={this.renderFooter}
         />
-      </SafeAreaView>
+      </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
+const viewStyles = StyleSheet.create({
+  container: {
+    ...styles.container,
+  },
   footerContainer: {
     marginTop: 5,
     marginLeft: 10,

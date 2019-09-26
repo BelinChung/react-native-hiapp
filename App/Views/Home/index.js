@@ -27,8 +27,7 @@ export default class HomeScreen extends React.Component {
       title: t('global.home'),
       headerRight: (
         <HeaderButton
-          isIcon
-          text='feedback'
+          icon='feedback'
           onPressButton={ onPressRightButtonFunc }/>
       )
     }
@@ -41,8 +40,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={viewStyles.container}>
-      </View>
+      <View style={viewStyles.container} />
     )
   }
 

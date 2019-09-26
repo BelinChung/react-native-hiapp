@@ -33,9 +33,6 @@ const TabNavigator = createBottomTabNavigator(
     Settings: { screen: SettingsStack }
   },
   {
-    navigationOptions: () => ({
-      header: null
-    }),
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarLabel: ({ focused, tintColor }) => {
         const { routeName } = navigation.state
@@ -79,6 +76,8 @@ const AppStack = createStackNavigator({
   Language: { screen: LanguageScreen },
   Feedback: { screen: FeedbackScreen },
   Message: { screen: MessageScreen }
+}, {
+  headerMode: 'none',
 })
 
 export default createAppContainer(AppStack)

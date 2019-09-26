@@ -11,21 +11,11 @@ import {
   StyleSheet
 } from 'react-native'
 
-export default class FeedbackScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state
-    const onPressRightButtonFunc = params.sendFeedback || function() {}
-    return {
-      ...config.defaultNavigation,
-      title: t('settings.feedback'),
-      headerRight: (
-        <HeaderButton
-          text={t('global.send')}
-          onPressButton={ onPressRightButtonFunc }/>
-      )
-    }
-  }
+import {
+  Header
+} from 'react-native-elements'
 
+export default class FeedbackScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -33,13 +23,17 @@ export default class FeedbackScreen extends React.Component {
     }
   }
 
-  componentDidMount () { //eslint-disable-line
-    this.props.navigation.setParams({ sendFeedback: () => this.sendFeedback() })
-  }
-
   render() {
     return (
       <View style={viewStyles.container}>
+        <Header
+          leftComponent={<HeaderButton text={ t('global.back') } icon={ 'ios7arrowleft' } onPressButton={ _ => { this.props.navigation.goBack() } }/>}
+          centerComponent={{ text: t('settings.feedback'), style: styles.modalHeader.center }}
+          rightComponent={<HeaderButton text={t('global.send')} onPressButton={ _ => { this.sendFeedback() }}/>}
+          containerStyle={{
+            backgroundColor: config.mainColor,
+          }}
+        />
         <Editor
           text={this.state.text}
           placeholder={t('settings.feedbackPlaceholder')}

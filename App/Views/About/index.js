@@ -1,22 +1,33 @@
 import React from 'react'
 import config from '@Config'
 import styles from '@Styles'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import HeaderButton from '@Components/HeaderButton'
 import t from '@Localize'
+
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image
+} from 'react-native'
+
+import {
+  Header
+} from 'react-native-elements'
 
 import LOGO_IMG from '@assets/logo.png'
 
 export default class AboutScreen extends React.Component {
-  static navigationOptions = _ => {
-    return {
-      ...config.defaultNavigation,
-      title: t('global.about'),
-    }
-  }
-
   render() {
     return (
       <View style={viewStyles.container}>
+        <Header
+          leftComponent={<HeaderButton text={ t('global.back') } icon={ 'ios7arrowleft' } onPressButton={ _ => { this.props.navigation.goBack() } }/>}
+          centerComponent={{ text: t('global.about'), style: styles.modalHeader.center }}
+          containerStyle={{
+            backgroundColor: config.mainColor,
+          }}
+        />
         <View style={viewStyles.textContainer}>
           <View style={viewStyles.logoView}>
             <Image style={viewStyles.logo} source={LOGO_IMG} />

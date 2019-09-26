@@ -1,0 +1,31 @@
+{
+  "global": {
+    "home": "Home",
+    "contacts": "Contacts",
+    "message": "Message",
+    "settings": "Settings",
+    "about": "About",
+    "profile": "Profile",
+    "send": "Send",
+    "ok": "OK",
+    "close": "Close"
+  },
+  "home": {
+    "publisher": "Publisher",
+    "publisherPlaceholder": "What's new with you."
+  },
+  "settings": {
+    "location": "Location",
+    "language": "Language",
+    "feedback": "Feedback",
+    "about": "About",
+    "avatar": "Avatar",
+    "nickname": "Nickname",
+    "gender": "Gender",
+    "male": "male",
+    "female": "female",
+    "needRestartTip": "The language setting will take effect after app is restarted",
+    "feedbackPlaceholder": "Hi, any suggestion to tell us?",
+    "feedbackSuccess": "Thanks for your feedback"
+  }
+}

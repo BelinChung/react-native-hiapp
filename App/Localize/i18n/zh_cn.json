@@ -1,0 +1,31 @@
+{
+  "global": {
+    "home": "首页",
+    "contacts": "联系人",
+    "message": "消息",
+    "settings": "设置",
+    "about": "关于",
+    "profile": "个人资料",
+    "send": "发送",
+    "ok": "确定",
+    "close": "关闭"
+  },
+  "home": {
+    "publisher": "发布框",
+    "publisherPlaceholder": "有什么好玩的要告诉大家"
+  },
+  "settings": {
+    "location": "位置",
+    "language": "语言",
+    "feedback": "问题反馈",
+    "about": "关于",
+    "avatar": "头像",
+    "nickname": "昵称",
+    "gender": "性别",
+    "male": "男",
+    "female": "女",
+    "needRestartTip": "语言设置成功，重启应用后生效",
+    "feedbackPlaceholder": "Hi, 有什么意见或建议要反馈给我们吗?",
+    "feedbackSuccess": "谢谢您的反馈"
+  }
+}

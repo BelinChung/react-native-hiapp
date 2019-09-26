@@ -1,0 +1,1 @@
+export const INIT_CONTACTS = 'INIT_CONTACTS'

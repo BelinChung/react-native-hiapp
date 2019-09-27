@@ -17,6 +17,10 @@ import {
   TouchableHighlight
 } from 'react-native'
 
+import {
+  Avatar
+} from 'react-native-elements'
+
 @connect(state => ({
   //
 }), {
@@ -33,7 +37,7 @@ export default class PostCard extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image style={styles.headerAvatar} source={{ uri: getRemoteAvatar(post.avatar) }}/>
+          <Avatar rounded avatarStyle={styles.headerAvatar} source={{ uri: getRemoteAvatar(post.avatar) }}/>
           <View style={styles.headerUser}>
             <Text style={styles.username}>{post.nickname}</Text>
             <Text style={styles.userTime}>{timeString}</Text>
@@ -133,13 +137,12 @@ const styles = StyleSheet.create({
   },
   headerAvatar: {
     width: 40,
-    height: 40,
-    borderRadius: 4,
-    marginRight: 9
+    height: 40
   },
   headerUser: {
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft: 6
   },
   username: {
     fontSize: 14,
@@ -148,8 +151,7 @@ const styles = StyleSheet.create({
   },
   userTime: {
     fontSize: 12,
-    color: '#8999a5',
-    marginTop: 3
+    color: '#8999a5'
   },
   details: {
     flexDirection: 'column'

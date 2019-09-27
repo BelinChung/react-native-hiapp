@@ -23,7 +23,7 @@ import {
   setModalVisibleStatus
 })
 
-export default class PublisherScreen extends React.Component {
+export default class PublisherModal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -35,7 +35,7 @@ export default class PublisherScreen extends React.Component {
     return (
       <View style={viewStyles.container}>
         <Header
-          leftComponent={<HeaderButton text={t('global.close')} onPressButton={ this.closeModal.bind(this) }/>}
+          leftComponent={<HeaderButton icon="ios7arrowleft" text={t('global.close')} onPressButton={ this.closeModal.bind(this) }/>}
           centerComponent={{ text: t('home.publisher'), style: styles.modalHeader.center }}
           rightComponent={<HeaderButton text={t('global.send')} onPressButton={ this.sendPost.bind(this) }/>}
           containerStyle={{

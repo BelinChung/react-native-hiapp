@@ -1,10 +1,13 @@
 import React from 'react'
+import connect from 'redux-connect-decorator'
 import PropTypes from 'prop-types'
 import config from '@Config'
 import Icon from '../Icon'
 import t from '@Localize'
+import ParsedText from 'react-native-parsed-text'
 import { getRemoteAvatar } from '@Utils'
 import { formatDistance } from 'date-fns'
+import { setModalVisibleStatus, setModalParams } from '@Store/Actions'
 
 import {
   View,
@@ -13,6 +16,13 @@ import {
   StyleSheet,
   TouchableHighlight
 } from 'react-native'
+
+@connect(state => ({
+  //
+}), {
+  setModalVisibleStatus,
+  setModalParams
+})
 
 export default class PostCard extends React.Component {
   render() {
@@ -30,7 +40,16 @@ export default class PostCard extends React.Component {
           </View>
         </View>
         <View style={styles.details}>
-          <Text style={styles.postText}>{post.text}</Text>
+          <ParsedText
+            style={styles.postText}
+            parse={
+              [
+                { type: 'url', style: styles.linkText, onPress: this._handleUrlPress.bind(this) },
+                { type: 'phone', style: styles.linkText, onPress: this._handlePhonePress.bind(this) },
+              ]
+            }
+            childrenProps={{ allowFontScaling: false }}
+          >{post.text}</ParsedText>
           {this._renderPostImage()}
         </View>
         {this._renderToolbar()}
@@ -56,19 +75,36 @@ export default class PostCard extends React.Component {
         <View style={styles.tools}>
           <TouchableHighlight style={[styles.toolItemContainer, styles.toolItemBorder]}>
             <View style={styles.toolItem}>
-              <Icon name="comment" size={16} color="#6d6d78"/>
+              <Icon name="comment" size={16} color="#6d6d78" style={{ marginTop: 2 }}/>
               <Text style={styles.toolItemText}>{ post.comment_count > 0 ? post.comment_count : t('global.comment') }</Text>
             </View>
           </TouchableHighlight>
           <TouchableHighlight style={styles.toolItemContainer}>
             <View style={styles.toolItem}>
-              <Icon name="like" size={16} color="#6d6d78"/>
+              <Icon name="like" size={16} color="#6d6d78" style={{ marginTop: 1 }}/>
               <Text style={styles.toolItemText}>{ post.like_count > 0 ? post.like_count : t('global.like') }</Text>
             </View>
           </TouchableHighlight>
         </View>
       )
     }
+  }
+
+  _handleUrlPress(url) {
+    if (url.indexOf('http') < 0) {
+      url = `http://${url}`
+    }
+    this.props.setModalParams({
+      url
+    })
+    this.props.setModalVisibleStatus({
+      name: 'webview',
+      status: true
+    })
+  }
+
+  _handlePhonePress() {
+    //
   }
 }
 
@@ -155,5 +191,8 @@ const styles = StyleSheet.create({
     color: '#6d6d78',
     fontSize: 12,
     marginLeft: 3
+  },
+  linkText: {
+    color: '#0366d6'
   }
 })

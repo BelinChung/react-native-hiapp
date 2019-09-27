@@ -18,10 +18,18 @@ export default handleActions({
         ...modalVisible
       }
     }
+  },
+  [types.SET_MODAL_PARAMS] (state, action) {
+    return {
+      ...state,
+      modalParams: action.payload
+    }
   }
 }, {
   user: {},
   modalVisible: {
-    publisher: false
-  }
+    publisher: false,
+    webview: false
+  },
+  modalParams: {}
 })

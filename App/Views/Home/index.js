@@ -4,18 +4,27 @@ import config from '@Config'
 import styles from '@Styles'
 import t from '@Localize'
 import HeaderButton from '@Components/HeaderButton'
-import { fetchUserInfo, setModalVisibleStatus } from '@Store/Actions'
+import PostCard from '@Components/PostCard'
+import { fetchUserInfo, fetchTimeline, refreshTimeline, loadMoreTimeline, setModalVisibleStatus } from '@Store/Actions'
 
 import {
   View,
-  StyleSheet
+  Text,
+  Animated,
+  Easing,
+  FlatList,
+  StyleSheet,
+  ActivityIndicator
 } from 'react-native'
 
 @connect(state => ({
-  //
+  timeline: state.home.timeline
 }), {
   setModalVisibleStatus,
-  fetchUserInfo
+  fetchUserInfo,
+  fetchTimeline,
+  refreshTimeline,
+  loadMoreTimeline
 })
 
 export default class HomeScreen extends React.Component {
@@ -33,14 +42,71 @@ export default class HomeScreen extends React.Component {
     }
   }
 
-  componentDidMount () { //eslint-disable-line
+  constructor(props) {
+    super(props)
+    this.state = {
+      refreshing: false,
+      loading: false,
+      loadedEnd: false,
+      loadResultOpacity: new Animated.Value(0),
+    }
+    this.fadeInAnimated = Animated.timing(
+      this.state.loadResultOpacity,
+      {
+        toValue: 1,
+        duration: 800,
+        easing: Easing.linear,
+      }
+    )
+    this.fadeOutAnimated = Animated.timing(
+      this.state.loadResultOpacity,
+      {
+        toValue: 0,
+        duration: 800,
+        easing: Easing.linear,
+      }
+    )
+  }
+
+  componentDidMount () {
+    this.setState({
+      refreshing: true
+    })
     this.props.navigation.setParams({ openPublisher: () => this.openPublisher() })
     this.props.fetchUserInfo()
+    this.props.fetchTimeline().then(_ => {
+      this.setState({
+        refreshing: false
+      })
+    })
+  }
+
+  _renderItem({ item }) {
+    return (
+      <PostCard post={item}/>
+    )
+  }
+
+  _keyExtractor(item, index) {
+    return item.id
   }
 
   render() {
     return (
-      <View style={viewStyles.container} />
+      <View style={viewStyles.container}>
+        <FlatList
+          contentContainerStyle={{ paddingBottom: 10 }}
+          keyExtractor={this._keyExtractor}
+          data={this.props.timeline}
+          renderItem={this._renderItem}
+          onRefresh={this._onRefresh.bind(this)}
+          onEndReached= {this._onEndReached.bind(this)}
+          refreshing={this.state.refreshing}
+        />
+        <Animated.View style={ { opacity: this.state.loadResultOpacity } }>
+          <Text style={viewStyles.loadResultContainer}>{ t('home.noMorePost') }</Text>
+        </Animated.View>
+      </View>
     )
   }
 
@@ -50,10 +116,70 @@ export default class HomeScreen extends React.Component {
       status: true
     })
   }
+
+  _onRefresh() {
+    this.setState({
+      refreshing: true
+    })
+    if (this.props.timeline[0].id >= 48) {
+      this._showLoadResultContainer()
+      this.setState({
+        refreshing: false
+      })
+    } else {
+      this.props.refreshTimeline().then(_ => {
+        this.setState({
+          refreshing: false
+        })
+      })
+    }
+  }
+
+  _onEndReached() {
+    if (this.state.loading) return false
+    if (this.props.timeline[this.props.timeline.length - 1].id <= 24) {
+      this.setState({
+        loadedEnd: true
+      })
+      return false
+    } else {
+      this.setState({
+        loading: true
+      })
+      this.props.loadMoreTimeline().then(_ => {
+        this.setState({
+          loading: false
+        })
+      })
+    }
+  }
+
+  _showLoadResultContainer() {
+    this.fadeInAnimated.start(_ => setTimeout(_ => {
+      this.fadeOutAnimated.start()
+    }, 1500))
+  }
 }
 
 const viewStyles = StyleSheet.create({
   container: {
     ...styles.container,
+    paddingTop: 5
   },
+  loadResultContainer: {
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: config.mainColor,
+    height: 30,
+    lineHeight: 30,
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 13
+  },
+  listFooter: {
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 })

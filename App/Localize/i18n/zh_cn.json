@@ -9,11 +9,14 @@
     "send": "发送",
     "ok": "确定",
     "close": "关闭",
-    "back": "返回"
+    "back": "返回",
+    "comment": "评论",
+    "like": "喜欢"
   },
   "home": {
     "publisher": "发布框",
-    "publisherPlaceholder": "有什么好玩的要告诉大家"
+    "publisherPlaceholder": "有什么好玩的要告诉大家",
+    "noMorePost": "没有更多的消息"
   },
   "settings": {
     "location": "位置",

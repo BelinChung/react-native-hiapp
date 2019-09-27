@@ -9,11 +9,14 @@
     "send": "Send",
     "ok": "OK",
     "close": "Close",
-    "back": "Back"
+    "back": "Back",
+    "comment": "Comment",
+    "like": "Like"
   },
   "home": {
     "publisher": "Publisher",
-    "publisherPlaceholder": "What's new with you."
+    "publisherPlaceholder": "What's new with you.",
+    "noMorePost": "No Updated Post"
   },
   "settings": {
     "location": "Location",

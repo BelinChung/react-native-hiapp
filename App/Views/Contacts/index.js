@@ -82,7 +82,6 @@ export default class HomeScreen extends React.Component {
         keyExtractor={this.keyExtractor}
         data={this.props.contacts}
         renderItem={this.renderItem}
-        onRefresh={ () => null }
         refreshing={this.state.refreshing}
       />
     )

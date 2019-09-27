@@ -17,5 +17,6 @@ Icon.defaultProps = {
   color: '#000'
 }
 Icon.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  size: PropTypes.number
 }

@@ -8,6 +8,7 @@ import t from '@Localize'
 import Post from '@Components/Post'
 import Comment from '@Components/Comment'
 import HeaderButton from '@Components/HeaderButton'
+import EmptyBox from '@Components/EmptyBox'
 import { isIphoneX } from '@Utils'
 
 import {
@@ -92,10 +93,7 @@ export default class PostScreen extends React.Component {
       )
     } else if (!this.state.comments.length) {
       return (
-        <View style={viewStyles.emptyBox}>
-          <Icon name="wujieguoyangshi" size={80} color="#929292"/>
-          <Text style={viewStyles.emptyBoxText}>{t('global.emptyBox')}</Text>
-        </View>
+        <EmptyBox style={{ height: 180 }}/>
       )
     } else {
       return this.state.comments.map((item, index) => {
@@ -152,17 +150,6 @@ const viewStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column'
-  },
-  emptyBox: {
-    height: 180,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column'
-  },
-  emptyBoxText: {
-    color: '#929292',
-    fontSize: 14,
-    marginTop: 5
   },
   toolbar: {
     flexDirection: 'row',

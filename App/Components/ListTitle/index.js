@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     paddingTop: 6,
-    paddingBottom: 6
+    paddingBottom: 6,
+    backgroundColor: '#f7f7f7'
   }
 })

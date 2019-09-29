@@ -4,13 +4,15 @@ import config from '@Config'
 import styles from '@Styles'
 import t from '@Localize'
 import ListTitle from '@Components/ListTitle'
+import EmptyBox from '@Components/EmptyBox'
 import { fetchContacts } from '@Store/Actions'
 import { getRemoteAvatar } from '@Utils'
 
 import {
   View,
-  FlatList,
-  StyleSheet
+  SectionList,
+  StyleSheet,
+  ActivityIndicator
 } from 'react-native'
 
 import {
@@ -34,18 +36,13 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      refreshing: false
+      loading: true
     }
   }
 
-  renderItem = ({ item }) => {
-    let listTitle = null
-    if (item.isFirstHeader) {
-      listTitle = <ListTitle title={item.header} />
-    }
+  _renderItem({ item }) {
     return (
       <View>
-        {listTitle}
         <ListItem
           chevron
           topDivider
@@ -61,28 +58,47 @@ export default class HomeScreen extends React.Component {
     )
   }
 
-  keyExtractor = (item, index) => index.toString()
+  _renderListEmpty() {
+    if (this.state.loading) {
+      return (
+        <View style={viewStyles.loadingBox}>
+          <ActivityIndicator size="large"/>
+        </View>
+      )
+    }
+    return (
+      <EmptyBox style={{ height: 250 }}/>
+    )
+  }
+
+  _renderSectionHeader({ section: { title } }) {
+    return (
+      <ListTitle title={title}/>
+    )
+  }
+
+  _keyExtractor(item, index) {
+    return index.toString()
+  }
 
   componentDidMount() {
-    this.setState({
-      refreshing: true
-    })
     this.props.fetchContacts().then(_ => {
       this.setState({
-        refreshing: false
+        loading: false
       })
     })
   }
 
   render() {
     return (
-      <FlatList
+      <SectionList
         style={viewStyles.container}
         contentContainerStyle={{ paddingBottom: 20 }}
-        keyExtractor={this.keyExtractor}
-        data={this.props.contacts}
-        renderItem={this.renderItem}
-        refreshing={this.state.refreshing}
+        keyExtractor={this._keyExtractor}
+        sections={this.props.contacts}
+        renderItem={this._renderItem.bind(this)}
+        renderSectionHeader={this._renderSectionHeader.bind(this)}
+        ListEmptyComponent={this._renderListEmpty.bind(this)}
       />
     )
   }
@@ -99,5 +115,10 @@ const viewStyles = StyleSheet.create({
   subtitleStyle: {
     fontSize: 14,
     color: '#858585'
+  },
+  loadingBox: {
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })

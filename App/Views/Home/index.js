@@ -4,7 +4,7 @@ import config from '@Config'
 import styles from '@Styles'
 import t from '@Localize'
 import HeaderButton from '@Components/HeaderButton'
-import PostCard from '@Components/PostCard'
+import Post from '@Components/Post'
 import { fetchUserInfo, fetchTimeline, refreshTimeline, loadMoreTimeline, setModalVisibleStatus } from '@Store/Actions'
 
 import {
@@ -14,6 +14,7 @@ import {
   Easing,
   FlatList,
   StyleSheet,
+  TouchableOpacity,
   ActivityIndicator
 } from 'react-native'
 
@@ -83,7 +84,9 @@ export default class HomeScreen extends React.Component {
 
   _renderItem({ item }) {
     return (
-      <PostCard post={item}/>
+      <TouchableOpacity activeOpacity={0.7} onPress={_ => { this.navToPost(item) }}>
+        <Post post={item}/>
+      </TouchableOpacity>
     )
   }
 
@@ -98,7 +101,7 @@ export default class HomeScreen extends React.Component {
           contentContainerStyle={{ paddingBottom: 10 }}
           keyExtractor={this._keyExtractor}
           data={this.props.timeline}
-          renderItem={this._renderItem}
+          renderItem={this._renderItem.bind(this)}
           onRefresh={this._onRefresh.bind(this)}
           onEndReached= {this._onEndReached.bind(this)}
           refreshing={this.state.refreshing}
@@ -115,6 +118,10 @@ export default class HomeScreen extends React.Component {
       name: 'publisher',
       status: true
     })
+  }
+
+  navToPost(item) {
+    this.props.navigation.navigate('Post', { mid: item.id })
   }
 
   _onRefresh() {

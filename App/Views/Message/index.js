@@ -21,8 +21,7 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View,
-  SafeAreaView
+  View
 } from 'react-native'
 
 import {

@@ -11,7 +11,9 @@
     "close": "关闭",
     "back": "返回",
     "comment": "评论",
-    "like": "喜欢"
+    "like": "喜欢",
+    "post": "消息",
+    "emptyBox": "暂无内容!!"
   },
   "home": {
     "publisher": "发布框",

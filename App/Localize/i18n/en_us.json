@@ -11,7 +11,9 @@
     "close": "Close",
     "back": "Back",
     "comment": "Comment",
-    "like": "Like"
+    "like": "Like",
+    "post": "Post",
+    "emptyBox": "Nothing here!!"
   },
   "home": {
     "publisher": "Publisher",

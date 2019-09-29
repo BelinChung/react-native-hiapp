@@ -15,6 +15,7 @@ import ProfileScreen from '@Views/Profile'
 import LanguageScreen from '@Views/Language'
 import FeedbackScreen from '@Views/Feedback'
 import MessageScreen from '@Views/Message'
+import PostScreen from '@Views/Post'
 
 const HomeStack = createStackNavigator({
   Home: { screen: HomeScreen, }
@@ -75,7 +76,8 @@ const AppStack = createStackNavigator({
   Profile: { screen: ProfileScreen },
   Language: { screen: LanguageScreen },
   Feedback: { screen: FeedbackScreen },
-  Message: { screen: MessageScreen }
+  Message: { screen: MessageScreen },
+  Post: { screen: PostScreen }
 }, {
   headerMode: 'none',
 })

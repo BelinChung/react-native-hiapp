@@ -7,7 +7,7 @@ import {
   Text,
   Button,
   StyleSheet,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native'
 
 export default class HeaderButton extends React.Component {
@@ -16,18 +16,18 @@ export default class HeaderButton extends React.Component {
     if (icon) {
       if (text) {
         return (
-          <TouchableHighlight underlayColor='transparent' onPress={() => onPressButton() }>
+          <TouchableOpacity onPress={() => onPressButton() }>
             <View style={styles.iconTextContainer}>
               <Icon name={icon} size={28} color="#fff"/>
               <Text style={styles.iconText}>{ text }</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableOpacity>
         )
       } else {
         return (
-          <TouchableHighlight underlayColor='transparent' style={styles.iconContainer} onPress={() => onPressButton() }>
+          <TouchableOpacity style={styles.iconContainer} onPress={() => onPressButton() }>
             <Icon name={icon} size={28} color="#fff"/>
-          </TouchableHighlight>
+          </TouchableOpacity>
         )
       }
     } else {

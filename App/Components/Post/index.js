@@ -14,7 +14,7 @@ import {
   Text,
   Image,
   StyleSheet,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native'
 
 import {
@@ -28,7 +28,7 @@ import {
   setModalParams
 })
 
-export default class PostCard extends React.Component {
+export default class Post extends React.Component {
   render() {
     const { disableToolbar, post } = this.props
     const timeString = `#${post.id} ${
@@ -65,31 +65,35 @@ export default class PostCard extends React.Component {
     const { post } = this.props
     if (post.original_pic) {
       return (
-        <TouchableHighlight>
-          <Image source={{ uri: post.original_pic }} style={styles.postImage} resizeMode={'contain'}/>
-        </TouchableHighlight>
+        <TouchableOpacity>
+          <Image source={{ uri: post.original_pic }} style={styles.postImage} resizeMode={'cover'}/>
+        </TouchableOpacity>
       )
     }
   }
 
   _renderToolbar() {
-    const { post } = this.props
-    if (!post.disableToolbar) {
+    const { post, disableToolbar } = this.props
+    if (!disableToolbar) {
       return (
         <View style={styles.tools}>
-          <TouchableHighlight style={[styles.toolItemContainer, styles.toolItemBorder]}>
+          <TouchableOpacity style={[styles.toolItemContainer, styles.toolItemBorder]}>
             <View style={styles.toolItem}>
               <Icon name="comment" size={16} color="#6d6d78" style={{ marginTop: 2 }}/>
               <Text style={styles.toolItemText}>{ post.comment_count > 0 ? post.comment_count : t('global.comment') }</Text>
             </View>
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.toolItemContainer}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.toolItemContainer}>
             <View style={styles.toolItem}>
               <Icon name="like" size={16} color="#6d6d78" style={{ marginTop: 1 }}/>
               <Text style={styles.toolItemText}>{ post.like_count > 0 ? post.like_count : t('global.like') }</Text>
             </View>
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
+      )
+    } else {
+      return (
+        <View style={{ marginBottom: 5 }}/>
       )
     }
   }
@@ -112,11 +116,11 @@ export default class PostCard extends React.Component {
   }
 }
 
-PostCard.defaultProps = {
+Post.defaultProps = {
   disableToolbar: false
 }
 
-PostCard.propTypes = {
+Post.propTypes = {
   post: PropTypes.object.isRequired,
   disableToolbar: PropTypes.bool,
 }

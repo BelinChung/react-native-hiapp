@@ -6,7 +6,7 @@ import {
   View,
   TextInput,
   StyleSheet,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native'
 
 export default class Editor extends React.Component {
@@ -36,9 +36,9 @@ export default class Editor extends React.Component {
   renderTool(tool, icon, handle = () => { }) {
     if (this.enableTool(tool)) {
       return (
-        <TouchableHighlight style={styles.tool}>
+        <TouchableOpacity style={styles.tool}>
           <Icon size={24} name={icon} color={'#666'}/>
-        </TouchableHighlight>
+        </TouchableOpacity>
       )
     }
   }

@@ -10,6 +10,7 @@ import Comment from '@Components/Comment'
 import HeaderButton from '@Components/HeaderButton'
 import EmptyBox from '@Components/EmptyBox'
 import { isIphoneX } from '@Utils'
+import { setModalVisibleStatus } from '@Store/Actions'
 
 import {
   Text,
@@ -28,7 +29,9 @@ import {
 
 @connect(state => ({
   timeline: state.home.timeline
-}))
+}), {
+  setModalVisibleStatus
+})
 
 export default class PostScreen extends React.Component {
   constructor(props) {
@@ -67,7 +70,7 @@ export default class PostScreen extends React.Component {
           </View>
         </ScrollView>
         <View style={[viewStyles.toolbar, isIphoneX() ? viewStyles.fixToolbar : {}]}>
-          <TouchableOpacity style={[viewStyles.toolItemContainer, viewStyles.toolItemBorder]}>
+          <TouchableOpacity style={[viewStyles.toolItemContainer, viewStyles.toolItemBorder]} onPress={this.openCommentModal.bind(this)}>
             <View style={viewStyles.toolItem}>
               <Icon name="comment" size={20} color="#6d6d78" style={{ marginTop: 2 }}/>
               <Text style={viewStyles.toolItemText}>{ post.comment_count > 0 ? post.comment_count : t('global.comment') }</Text>
@@ -117,6 +120,13 @@ export default class PostScreen extends React.Component {
       this.setState({
         loadingComments: false
       })
+    })
+  }
+
+  openCommentModal() {
+    this.props.setModalVisibleStatus({
+      name: 'comment',
+      status: true
     })
   }
 }

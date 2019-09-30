@@ -2,6 +2,7 @@ import React from 'react'
 import connect from 'redux-connect-decorator'
 import PublisherModal from '@Modals/Publisher'
 import WebviewModal from '@Modals/Webview'
+import CommentModal from '@Modals/Comment'
 
 import {
   View,
@@ -29,6 +30,13 @@ export default class Modals extends React.Component {
           visible={this.props.modalVisible.webview}
         >
           <WebviewModal />
+        </Modal>
+        <Modal
+          animationType="slide"
+          onRequestClose={() => {}}
+          visible={this.props.modalVisible.comment}
+        >
+          <CommentModal />
         </Modal>
       </View>
     )

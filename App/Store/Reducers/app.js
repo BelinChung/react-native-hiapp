@@ -29,7 +29,8 @@ export default handleActions({
   user: {},
   modalVisible: {
     publisher: false,
-    webview: false
+    webview: false,
+    comment: false
   },
   modalParams: {}
 })

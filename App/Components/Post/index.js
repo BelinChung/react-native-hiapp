@@ -77,7 +77,7 @@ export default class Post extends React.Component {
     if (!disableToolbar) {
       return (
         <View style={styles.tools}>
-          <TouchableOpacity style={[styles.toolItemContainer, styles.toolItemBorder]}>
+          <TouchableOpacity style={[styles.toolItemContainer, styles.toolItemBorder]} onPress={this.openCommentModal.bind(this)}>
             <View style={styles.toolItem}>
               <Icon name="comment" size={16} color="#6d6d78" style={{ marginTop: 2 }}/>
               <Text style={styles.toolItemText}>{ post.comment_count > 0 ? post.comment_count : t('global.comment') }</Text>
@@ -96,6 +96,13 @@ export default class Post extends React.Component {
         <View style={{ marginBottom: 5 }}/>
       )
     }
+  }
+
+  openCommentModal() {
+    this.props.setModalVisibleStatus({
+      name: 'comment',
+      status: true
+    })
   }
 
   _handleUrlPress(url) {

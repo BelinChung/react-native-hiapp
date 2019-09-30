@@ -45,7 +45,6 @@ export default class HomeScreen extends React.Component {
       <View>
         <ListItem
           chevron
-          topDivider
           bottomDivider
           containerStyle={viewStyles.listItem}
           subtitleStyle={viewStyles.subtitleStyle}

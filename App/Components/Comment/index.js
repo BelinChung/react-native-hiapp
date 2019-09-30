@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     padding: 10,
-    borderTopWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: '#dadada'
   },
   avatar: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   detailText: {
     marginTop: 2,
-    fontSize: 12,
-    color: '#5d5d5d'
+    fontSize: 14,
+    color: '#333'
   }
 })

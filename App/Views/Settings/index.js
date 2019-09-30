@@ -92,13 +92,13 @@ export default class HomeScreen extends React.Component {
 const viewStyles = StyleSheet.create({
   container: {
     ...styles.container,
-    paddingTop: 20
+    paddingTop: 15
   },
   list: {
-    marginTop: 15
+    marginTop: 10
   },
   listItem: {
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingTop: 8,
+    paddingBottom: 8
   }
 })

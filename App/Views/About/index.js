@@ -64,7 +64,7 @@ const viewStyles = StyleSheet.create({
     borderColor: '#dfdfdf',
     backgroundColor: 'white',
     borderRadius: 5,
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     justifyContent: 'center'
   },
   logo: {

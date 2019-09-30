@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     borderColor: '#dadada',
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     backgroundColor: '#fff',
     flexDirection: 'column'
   },
@@ -161,8 +161,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   postText: {
-    fontSize: 12,
-    color: '#000',
+    fontSize: 15,
+    color: '#333',
     padding: 10,
     paddingBottom: 5,
     paddingTop: 0
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   tools: {
     flexDirection: 'row',
     borderTopColor: '#dadada',
-    borderTopWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
     marginTop: 5
   },
   toolItemContainer: {
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   toolItemBorder: {
-    borderRightWidth: 1,
+    borderRightWidth: StyleSheet.hairlineWidth,
     borderColor: '#dadada'
   },
   toolItemText: {

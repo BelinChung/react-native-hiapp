@@ -130,7 +130,7 @@ const viewStyles = StyleSheet.create({
     marginBottom: 5
   },
   comments: {
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     borderColor: '#dadada',
     backgroundColor: '#fff',
     marginBottom: 60,
@@ -156,7 +156,7 @@ const viewStyles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     backgroundColor: '#fff',
-    borderTopWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: '#dadada'
   },
   fixToolbar: {
@@ -172,7 +172,7 @@ const viewStyles = StyleSheet.create({
     justifyContent: 'center'
   },
   toolItemBorder: {
-    borderRightWidth: 1,
+    borderRightWidth: StyleSheet.hairlineWidth,
     borderColor: '#dadada'
   },
   toolItemText: {

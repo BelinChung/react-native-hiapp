@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 45,
     backgroundColor: '#f9f9f9',
-    borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
     borderLeftWidth: 0,
     borderRightWidth: 0,
     borderColor: '#dadada',

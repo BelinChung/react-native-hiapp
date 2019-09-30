@@ -3,9 +3,9 @@
 
 ## Previews
 
-[![preview](https://i.imgur.com/WHmiSnl.png)](https://youtu.be/ogZjvBNeOJQ) 
+[![preview](https://i.imgur.com/lrKgIMO.png)](https://youtu.be/C2hX8ruKS9o) 
 
-Mirrors: [秒拍](http://t.cn/R5qrq7H) 
+Mirrors: [秒拍](http://t.cn/Aim7kcIf) 
 
 ## Requirements
 

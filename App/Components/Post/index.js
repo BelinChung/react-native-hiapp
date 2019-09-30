@@ -7,7 +7,7 @@ import t from '@Localize'
 import ParsedText from 'react-native-parsed-text'
 import { getRemoteAvatar } from '@Utils'
 import { formatDistance } from 'date-fns'
-import { setModalVisibleStatus, setModalParams } from '@Store/Actions'
+import { setModalVisibleStatus, setModalParams, updatePost } from '@Store/Actions'
 
 import {
   View,
@@ -25,7 +25,8 @@ import {
   //
 }), {
   setModalVisibleStatus,
-  setModalParams
+  setModalParams,
+  updatePost
 })
 
 export default class Post extends React.Component {
@@ -83,10 +84,10 @@ export default class Post extends React.Component {
               <Text style={styles.toolItemText}>{ post.comment_count > 0 ? post.comment_count : t('global.comment') }</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.toolItemContainer}>
+          <TouchableOpacity style={styles.toolItemContainer} onPress={this.toggleLikeStatus.bind(this)}>
             <View style={styles.toolItem}>
-              <Icon name="like" size={16} color="#6d6d78" style={{ marginTop: 1 }}/>
-              <Text style={styles.toolItemText}>{ post.like_count > 0 ? post.like_count : t('global.like') }</Text>
+              <Icon name="like" size={16} color={post.liked ? config.mainColor : '#6d6d78'} style={{ marginTop: 1 }}/>
+              <Text style={[styles.toolItemText, { color: post.liked ? config.mainColor : '#6d6d78' }]}>{ post.like_count > 0 ? post.like_count : t('global.like') }</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -102,6 +103,21 @@ export default class Post extends React.Component {
     this.props.setModalVisibleStatus({
       name: 'comment',
       status: true
+    })
+  }
+
+  toggleLikeStatus() {
+    const { post } = this.props
+    const newLikeStatus = !post.liked
+    this.props.updatePost({
+      mid: post.id,
+      key: 'liked',
+      value: newLikeStatus
+    })
+    this.props.updatePost({
+      mid: post.id,
+      key: 'like_count',
+      value: newLikeStatus ? post.like_count + 1 : post.like_count - 1
     })
   }
 

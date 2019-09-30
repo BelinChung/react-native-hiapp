@@ -10,7 +10,7 @@ import Comment from '@Components/Comment'
 import HeaderButton from '@Components/HeaderButton'
 import EmptyBox from '@Components/EmptyBox'
 import { isIphoneX } from '@Utils'
-import { setModalVisibleStatus } from '@Store/Actions'
+import { setModalVisibleStatus, updatePost } from '@Store/Actions'
 
 import {
   Text,
@@ -30,19 +30,29 @@ import {
 @connect(state => ({
   timeline: state.home.timeline
 }), {
-  setModalVisibleStatus
+  setModalVisibleStatus,
+  updatePost
 })
 
 export default class PostScreen extends React.Component {
   constructor(props) {
     super(props)
     const { mid } = this.props.navigation.state.params
-    const post = this.props.timeline.find(item => item.id === mid)
+    this.props.timeline.some((item, i) => {
+      if (item.id === mid) {
+        this.post = this.props.timeline[i]
+        return true
+      }
+    })
     this.state = {
-      post,
       loadingComments: true,
       comments: []
     }
+  }
+
+  _getPost() {
+    const { mid } = this.props.navigation.state.params
+    return this.props.timeline.find(item => item.id === mid)
   }
 
   componentDidMount() {
@@ -50,7 +60,7 @@ export default class PostScreen extends React.Component {
   }
 
   render() {
-    const { post } = this.state
+    const post = this._getPost()
     return (
       <View style={viewStyles.container}>
         <Header
@@ -76,10 +86,10 @@ export default class PostScreen extends React.Component {
               <Text style={viewStyles.toolItemText}>{ post.comment_count > 0 ? post.comment_count : t('global.comment') }</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={viewStyles.toolItemContainer}>
+          <TouchableOpacity style={viewStyles.toolItemContainer} onPress={this.toggleLikeStatus.bind(this)}>
             <View style={viewStyles.toolItem}>
-              <Icon name="like" size={20} color="#6d6d78" style={{ marginTop: 1 }}/>
-              <Text style={viewStyles.toolItemText}>{ post.like_count > 0 ? post.like_count : t('global.like') }</Text>
+              <Icon name="like" size={20} color={post.liked ? config.mainColor : '#6d6d78'} style={{ marginTop: 1 }}/>
+              <Text style={[viewStyles.toolItemText, { color: post.liked ? config.mainColor : '#6d6d78' }]}>{ post.like_count > 0 ? post.like_count : t('global.like') }</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -127,6 +137,21 @@ export default class PostScreen extends React.Component {
     this.props.setModalVisibleStatus({
       name: 'comment',
       status: true
+    })
+  }
+
+  toggleLikeStatus() {
+    const post = this._getPost()
+    const newLikeStatus = !post.liked
+    this.props.updatePost({
+      mid: post.id,
+      key: 'liked',
+      value: newLikeStatus
+    })
+    this.props.updatePost({
+      mid: post.id,
+      key: 'like_count',
+      value: newLikeStatus ? post.like_count + 1 : post.like_count - 1
     })
   }
 }

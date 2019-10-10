@@ -1,7 +1,6 @@
 import React from 'react'
 import config from '@Config'
 import t from '@Localize'
-import { Text } from 'react-native'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
@@ -16,6 +15,12 @@ import LanguageScreen from '@Views/Language'
 import FeedbackScreen from '@Views/Feedback'
 import MessageScreen from '@Views/Message'
 import PostScreen from '@Views/Post'
+
+import {
+  View,
+  Text,
+  Platform
+} from 'react-native'
 
 const HomeStack = createStackNavigator({
   Home: { screen: HomeScreen, }
@@ -37,13 +42,19 @@ const TabNavigator = createBottomTabNavigator(
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarLabel: ({ focused, tintColor }) => {
         const { routeName } = navigation.state
+        const viewStyle = {
+          alignItems: 'center'
+        }
+        if (Platform.OS === 'android') {
+          viewStyle.marginBottom = 4
+        }
         switch (routeName) {
           case 'Home':
-            return <Text style={{ color: tintColor, fontSize: 12 }}>{t('global.home')}</Text>
+            return <View style={viewStyle}><Text style={{ color: tintColor, fontSize: 12 }}>{t('global.home')}</Text></View>
           case 'Contacts':
-            return <Text style={{ color: tintColor, fontSize: 12 }}>{t('global.contacts')}</Text>
+            return <View style={viewStyle}><Text style={{ color: tintColor, fontSize: 12 }}>{t('global.contacts')}</Text></View>
           case 'Settings':
-            return <Text style={{ color: tintColor, fontSize: 12 }}>{t('global.settings')}</Text>
+            return <View style={viewStyle}><Text style={{ color: tintColor, fontSize: 12 }}>{t('global.settings')}</Text></View>
         }
       },
       tabBarIcon: ({ focused, tintColor }) => {

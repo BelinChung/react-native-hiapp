@@ -9,6 +9,8 @@ import { setModalVisibleStatus } from '@Store/Actions'
 
 import {
   View,
+  StatusBar,
+  Platform,
   SafeAreaView,
   StyleSheet
 } from 'react-native'
@@ -32,6 +34,9 @@ export default class WebviewModal extends React.Component {
           centerComponent={{ text: 'Webview', style: styles.modalHeader.center }}
           containerStyle={{
             backgroundColor: config.mainColor,
+            ...Platform.select({
+              android: config.androidHeader
+            })
           }}
         />
         <SafeAreaView style={viewStyles.webview}>

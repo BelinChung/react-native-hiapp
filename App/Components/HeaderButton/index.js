@@ -31,7 +31,11 @@ export default class HeaderButton extends React.Component {
         )
       }
     } else {
-      return <Button title={text} color="#fff" onPress={() => onPressButton() }/>
+      return (
+        <TouchableOpacity onPress={() => onPressButton()}>
+          <Text style={styles.rightButton}>{text}</Text>
+        </TouchableOpacity>
+      )
     }
   }
 }
@@ -65,5 +69,9 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  rightButton: {
+    color: '#fff',
+    fontSize: 18
   }
 })

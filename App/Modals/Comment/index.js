@@ -10,6 +10,7 @@ import { setModalVisibleStatus } from '@Store/Actions'
 import {
   View,
   Alert,
+  Platform,
   StyleSheet
 } from 'react-native'
 
@@ -40,6 +41,9 @@ export default class CommentModal extends React.Component {
           rightComponent={<HeaderButton text={t('global.send')} onPressButton={ this.sendComment.bind(this) }/>}
           containerStyle={{
             backgroundColor: config.mainColor,
+            ...Platform.select({
+              android: config.androidHeader
+            })
           }}
         />
         <Editor

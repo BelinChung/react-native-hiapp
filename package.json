@@ -19,7 +19,7 @@
     "@react-native-community/async-storage": "^1.6.2",
     "date-fns": "^2.3.0",
     "i18n-js": "^3.3.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "react": "16.9.0",
     "react-native": "0.61.1",
     "react-native-elements": "^1.2.2",

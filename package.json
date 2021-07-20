@@ -21,7 +21,7 @@
     "i18n-js": "^3.3.0",
     "lodash": "^4.17.15",
     "react": "16.9.0",
-    "react-native": "0.61.1",
+    "react-native": "0.62.3",
     "react-native-elements": "^1.2.2",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-gifted-chat": "^0.10.1",
